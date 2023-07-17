@@ -1,0 +1,17 @@
+파이썬
+PyQt
+
+
+(pip)
+FinanceDataReader
+pykiwoom
+datetime
+pip install pandas pyqt5 matplotlib
+
+
+
+
+KOA STUDIO
+키움오픈API https://www.kiwoom.com/h/customer/download/VOpenApiInfoView
+
+
