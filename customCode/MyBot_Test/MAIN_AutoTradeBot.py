@@ -15,6 +15,9 @@ print(funcs.get_PriceYesterday(0))
 print("주문완료")
 
 
+#CLASS Convert test--------------------------------------
+order = kiwoom.Order()
+order.get_hoga(funcs.get_code(0))
 
 
 

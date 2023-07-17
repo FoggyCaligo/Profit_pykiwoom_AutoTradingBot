@@ -1,0 +1,15 @@
+import FinanceDataReader as fdr
+import datetime as dt
+
+class Stock:
+    name="test_삼성전자"
+    code = '0'
+    PastData = []
+
+    hogaData = 'temp'#호가데이터 가져오는 함수 만들 때까지 임시로
+    currPrice = 75000    
+    Stored = 0 
+    
+    def __init__():
+        pass
+

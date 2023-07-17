@@ -13,6 +13,8 @@ def get_name(ksp_num):
 def get_code(ksp_num):
     return KSP200['Code'][ksp_num]
 
+
+
 def get_PriceYesterday(ksp_num):
     yesterday = dt.date.today()-dt.timedelta(days=1)
     return int(fdr.DataReader(symbol=str(KSP200['Code'][ksp_num]),start=yesterday.strftime('%Y/%m/%d'))['Close'].values[0])
