@@ -39,15 +39,18 @@ index = 0
 
 
 
+stockls = []
+for i in ksp200:
+    tempc = Class()
 
 
 
-
-print(fdr.DataReader(symbol=str(ksp200['Code']),start=str(dt.date.today().year-1))['Close'].values)
 
 
 
 def Stockls_refine():
-    fdr.DataReader(symbol=str(ksp200['Code'][ksp_num]),start=str(dt.date.today().year-1))['Close'].values
+
+
+
     pass
 

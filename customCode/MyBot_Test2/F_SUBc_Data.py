@@ -1,6 +1,6 @@
 import FinanceDataReader as fdr
 import datetime as dt
-import c_stock as Stock
+#import c_stock as Stock
 
 
 
@@ -26,10 +26,10 @@ ksp200 = df_krx[0:199].copy()#코스피 200 종목 담긴 배열
 
 
 
-#가격이 5만원 이하인 종목들 찾기
+#가격이 4만원 이하인 종목들 찾기
 under5ls = []
 for i in range(199):
-    under5ls.append(get_PriceData)
+    under4ls.append(get_PriceData)
 
 
 
@@ -43,9 +43,7 @@ index = 0
 
 stockls = []
 for i in ksp200:
-    tempc = Class()
-
-
+    pass
 
 
 
