@@ -21,6 +21,3 @@ def sell(StockCode, Qty, Price):
 
 
 
-
-
-

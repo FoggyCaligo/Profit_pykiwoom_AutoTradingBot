@@ -16,6 +16,11 @@ df = kiwoom.block_request('opt10004',
 
 # print(['주식호가'])
 
+
+kiwoom.OnReceiveRealData("005930","호가")
+
+
+
 for each in df:
     print(each)
 

@@ -33,8 +33,14 @@ strRealData = kiwoom.GetCommRealData('005930;060310', 10);
 
 
 kiwoom.GetCommRealData('005930',10)
-print(kiwoom.OnReceiveRealData('10004',10,"전문"))
+print(kiwoom.OnReceiveRealData('005930',10,"전문"))
 
 
 
 # print(kiwoom.GetOutputValue)
+
+
+
+
+
+
