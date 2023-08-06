@@ -12,7 +12,7 @@ class MyWindow(QMainWindow):
 
     def __init__(self,code):
         self.code = []
-        super().__init__(code)
+        super().__init__()
         self.ocx = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self.ocx.OnEventConnect.connect(self._handler_login)
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
@@ -33,8 +33,7 @@ class MyWindow(QMainWindow):
 
     def connect(self):
         self.SetRealReg("1000", self.code, "41", 0)
-        for i in range(self.code):
-            self.SetRealReg("1000", self.code, "41", 0)
+        #self.SetRealReg("1000", self.code, "41", 0)
 
 
 
@@ -80,3 +79,6 @@ if __name__ == "__main__":
     window = MyWindow('005930')
     window.show()
     app.exec_()
+
+
+

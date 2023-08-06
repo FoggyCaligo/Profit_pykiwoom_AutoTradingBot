@@ -8,4 +8,4 @@ def f_getPriceData(ksp_num):#최근 2년 하루단위 종가를 반환하는 함
     return fdr.DataReader(symbol=str(DataArr['Code'][ksp_num]),start=str(dt.date.today().year-2))
 
 
-
+f_getPriceData("005930")

@@ -1,4 +1,7 @@
-from Basic_Functions import f_getPrice as getPrice
+# from Basic_Functions import f_getPrice as getPrice
+
+import F_GetHoga_realtime as hoga
+import F_Order as order
 
 
 

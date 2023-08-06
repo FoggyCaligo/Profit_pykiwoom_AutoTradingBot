@@ -6,49 +6,26 @@ import datetime
 
 
 class MyWindow(QMainWindow):
-    code = '005930'
-
-
-
-    def __init__(self,code):
-        self.code = code
+    def __init__(self):
         super().__init__()
-        
-
+        self.setWindowTitle("주식호가잔량")
+        # self.setGeometry(300, 300, 300, 400)
         self.ocx = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
-        self.ocx.OnEventConnect.connect(self._handler_login)
+        self.ocx.OnEventConnect.connect(self.connect)
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
-
-
-
-
-        # self.connect()
         # 2초 후에 로그인 진행
-        QTimer.singleShot(1000*10,self.connect)
-        QTimer.singleShot(1000 * 0, self.CommmConnect)
+        QTimer.singleShot(1000 * 2, self.CommmConnect)
 
 
-        self.connect()
 
-    def __del__(self):
-         self.DisConnectRealData("1000") 
 
 
     def connect(self):
-        self.SetRealReg("1000", self.code, "41", 0)
-    # def disconnect(self):
-    #     self.DisConnectRealData("1000") 
-
-
+        self.SetRealReg("1000", "005930", "41", 0)
 
     def CommmConnect(self):
         self.ocx.dynamicCall("CommConnect()")
         self.statusBar().showMessage("login 중 ...")
-
-    def _handler_login(self, err_code):
-        if err_code == 0:
-            self.statusBar().showMessage("login 완료")
-
 
     def _handler_real_data(self, code, real_type, data):
         if real_type == "주식호가잔량":
@@ -64,17 +41,21 @@ class MyWindow(QMainWindow):
     def SetRealReg(self, screen_no, code_list, fid_list, real_type):
         self.ocx.dynamicCall("SetRealReg(QString, QString, QString, QString)", 
                               screen_no, code_list, fid_list, real_type)
-        print("구독신청 완료")
+        self.statusBar().showMessage("구독 신청 완료")
+
     def DisConnectRealData(self, screen_no):
         self.ocx.dynamicCall("DisConnectRealData(QString)", screen_no)
-        print("구독 해지 완료")
+        self.statusBar().showMessage("구독 해지 완료")
+
     def GetCommRealData(self, code, fid):
         data = self.ocx.dynamicCall("GetCommRealData(QString, int)", code, fid) 
         return data
 
+    def __del__(self):
+        self.DisConnectRealData("1000") 
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MyWindow('005930')
+    window = MyWindow()
     window.show()
     app.exec_()
