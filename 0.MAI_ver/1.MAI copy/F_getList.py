@@ -18,7 +18,7 @@ def getList():
     for each in DataArr['Code']:
         each = str(each)
         currPrice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))
-        currPrice = (fdr.DataReader(symbol=each,start='2023-08-01',end='2023-08-01'))
+        # currPrice = (fdr.DataReader(symbol=each,start='2023-08-01',end='2023-08-01'))
         
         currPrice = int(currPrice['Open'].values)
 

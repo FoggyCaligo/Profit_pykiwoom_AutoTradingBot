@@ -10,7 +10,6 @@ import F_getList as getls
 
 
 
-
 class HogaManager(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -41,7 +40,9 @@ class HogaManager(QMainWindow):
             self.buy[price] = amount
         del(price)
         del(amount)
-    
+        print(self.buy)
+        print(self.sell)
+
 
     def get_buy(self):
         return self.buy

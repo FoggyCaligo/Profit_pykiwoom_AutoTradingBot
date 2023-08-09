@@ -1,0 +1,58 @@
+amount = [50,50,50,50,50000,10,100,70,200,30]
+sellindex = int(len(amount)/2)-1
+buyindex = sellindex+1
+
+
+while(True):
+    if buyindex==len(amount): break
+    if sellindex == 0 : break
+
+    if amount[buyindex] > amount[sellindex]:#매수수량 > 매도수량
+        amount[buyindex]-=amount[sellindex]
+        sellindex-=1#매도한칸위로
+    elif amount[buyindex] < amount[sellindex]:#매수수량 < 매도수량
+        amount[sellindex]-=amount[buyindex]
+        buyindex+=1#매수한칸아래로
+    else:
+        buyindex+=1
+        sellindex-=1
+
+    
+
+    print(sellindex," ",buyindex)
+
+middle = int(len(amount)/2)
+rsult = int((middle-sellindex + buyindex-middle)/2)
+print(rsult)#예측주가인덱스(몇분정도이후의 예상주가)
+
+# currprice=middle#잠시 테스트용. 실제 구매가능 주가로 입력 필요
+# if(rsult<currprice):#rsult인덱스가 매도쪽에 더 ㅏ
+#     print("buy")
+# else:
+#     print("skip")
+
+
+
+
+# flag = len(int(sellamount/2))
+
+buyflag = 0
+buyover = 0
+sellflag = 0
+sellover = 0
+curr = 0
+
+
+#     if buyover+buyamount[buyflag] > sellover+sellamount[sellflag]: #매수수량 > 매도수량
+#         buyover = buyamount[buyflag]-sellamount[sellflag]
+#         buyflag+=1
+        
+#     elif buyover+buyamount[buyflag] < sellover+sellamount[sellflag]: #매수수량 < 매도수량
+#         sellover = buyamount[buyflag]-sellamount[sellflag]
+#         sellflag+=1
+#     else:
+#         continue
+
+
+# print(buyflag)
+# print(sellflag)

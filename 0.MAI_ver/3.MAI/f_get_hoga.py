@@ -5,9 +5,13 @@ from PyQt5.QtCore import *
 import datetime
 
 
-class MyWindow(QMainWindow):
+import class_hogaData as StockClass
+import f_getls as getls
+
+
+class Hoga(QMainWindow):
     
-    def __init__(self):
+    def __init__(self,code):
         super().__init__()
         self.setWindowTitle("주식호가잔량")
         # self.setGeometry(300, 300, 300, 400)
@@ -16,56 +20,52 @@ class MyWindow(QMainWindow):
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
         # 2초 후에 로그인 진행
         QTimer.singleShot(1000 * 2, self.CommmConnect)
-        self.code = "005930"
-        self.buyamount = []
-        self.buyprice = []
-
-        self.selamount = []
-        self.selprice=[]
-
+        self.code = code
+        self.buyamount=[]
+        self.buyprice=[]
+        self.sellamount=[]
+        self.sellprice=[]
 
     def connect(self):
-        self.SetRealReg("1000", "005930", "41", 0)
+        self.SetRealReg("1000", self.code, "41", 0)
 
     def CommmConnect(self):
         self.ocx.dynamicCall("CommConnect()")
         self.statusBar().showMessage("login 중 ...")
 
 
-    def _Handler_realData(self):
-        #print(self.GetCommRealData(self.code,21))
-        temp = []
-        pass
-
-
 
     def _handler_real_data(self, code, real_type, data):
-        # print(self.GetCommRealData(code,21))
-        # print(self.GetCommRealData(code,41))
-        # print(self.GetCommRealData(code,61))
-        # print(self.GetCommRealData(code,51))
-        # print(self.GetCommRealData(code,71))
-
-
-        # for i in range(10):
-        #     temp = []
-        #     temp.append(self.GetCommRealData(code,41+i))
-        #     temp.append(self.GetCommRealData(code,61+i))
-        #     self.selarr.append(temp)
-        #     temp.clear()
-        #     temp.append(self.GetCommRealData(code,51+i))
-        #     temp.append(self.GetCommRealData(code,71+i))
-        #     self.buyarr.append(temp)
-            
-        # print("buy",self.buyarr)
-        # print("sell",self.selarr)
-
-
-        for i in range(9):
-            self.buyamount.append(self.GetCommRealData(code,61+i))
-        print(self.buyamount)
-
+        self.buyamount.clear()
+        self.buyprice.clear()
+        self.sellamount.clear()
+        self.sellprice.clear()
         
+        for i in range(10):
+            self.buyamount.append(self.GetCommRealData(code,71+i))
+            self.buyprice.append(self.GetCommRealData(code,51+i))
+            self.sellamount.append(self.GetCommRealData(code,61+i))
+            self.sellprice.append(self.GetCommRealData(code,41+i))
+        
+        print("--------------------------")
+        print(self.buyprice)
+        print(self.buyamount)
+        print("\n")
+        print(self.sellprice)
+        print(self.sellamount)
+        # for i in code:
+        #     print("code1",i)
+        #     temp = StockClass.StockData(i,[],[],[],[])
+        #     for a in range(10):
+        #         temp.sellamount.append(self.GetCommRealData(i,41+a))
+        #         temp.sellprice.append( self.GetCommRealData(i, 61+a))
+        #         temp.buyamount.append(self.GetCommRealData(i,51+a))
+        #         temp.buyprice.append(self.GetCommRealData(i, 71+a))
+        #     self.stockls.append(temp)
+        # print(self.stockls)
+        # print("\n\n")
+
+
 
         # print(self.GetCommRealData(code,49))#매도9주가
         # print(self.GetCommRealData(code,69))#매도9잔량
@@ -135,6 +135,24 @@ class MyWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MyWindow()
+    window = Hoga("005930")
+    window.show()
+    app.exec_()#
+    
+    # codearr = getls.getList()
+    # dataarr = []
+    # for each in codearr:
+    #     dataarr.append(Hoga(each))
+    #     pass
+
+    # app.exec_()
+
+
+apparr = []
+stockarr = getls.getList()
+for each in stockarr:
+    app = QApplication(sys.argv)
+    window=Hoga(each)
     window.show()
     app.exec_()
+
