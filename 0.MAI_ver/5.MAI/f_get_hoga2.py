@@ -53,6 +53,7 @@ class Hoga(QMainWindow):
         print("\n")
         print(self.sellprice)
         print(self.sellamount)
+        
 
 
 

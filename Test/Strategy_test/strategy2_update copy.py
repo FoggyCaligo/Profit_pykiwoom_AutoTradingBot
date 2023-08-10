@@ -11,7 +11,7 @@ while(True):
         break
     if sellidx==len(amount):
         break
-
+        
     if(amount[buyidx]>amount[sellidx]):
         amount[buyidx]-=amount[sellidx]
         sellidx+=1

@@ -27,15 +27,9 @@ def calc_assumePrice(hoga_arr):
 
 
 
-def calc_assumePrice2(amount_arr):
+def decision(amount_arr,price_arr):
+    expec = calc_assumePrice(amount_arr)
     middle = int(len(amount_arr)/2)
-    buyidx=middle
-    sellidx = middle+1
-
-
-def decision(hoga_arr,price_arr):
-    expec = calc_assumePrice(hoga_arr)
-    middle = int(len(hoga_arr)/2)
     if expec<middle:
         return 0
     
@@ -46,11 +40,10 @@ def decision(hoga_arr,price_arr):
         tax = revenue*0.00315
         print("tax:",tax)
         revenue -=tax
+        print("revenue:",revenue)
         if(revenue>10):
             return revenue
         else: return 0
-
-
 
 
 print(decision(amount,price))
