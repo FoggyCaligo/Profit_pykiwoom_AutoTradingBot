@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-08-11T05:09:25.223Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="Trp0wVEG3ACM9rrU-C-m" version="21.6.1" type="device">
+<mxfile host="Electron" modified="2023-08-11T07:57:10.198Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="IA5eIfww8yl-z-1IQuF0" version="21.6.1" type="device">
   <diagram name="페이지-1" id="1V1hIyzYWLw6n8yJ7-vo">
-    <mxGraphModel dx="337" dy="591" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="819" dy="478" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -530,7 +530,183 @@
           <mxGeometry x="3750" y="58" width="100" height="75" as="geometry" />
         </mxCell>
         <mxCell id="sMFrb6Sxw22Ko-RmrcBn-146" value="봇 알고리즘" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="2350" y="27.5" width="1580" height="465" as="geometry" />
+          <mxGeometry x="2350" y="27.5" width="1580" height="602.5" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-150" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="sMFrb6Sxw22Ko-RmrcBn-151" target="sMFrb6Sxw22Ko-RmrcBn-153">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-151" value="start" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="2050" y="912.5" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-152" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="sMFrb6Sxw22Ko-RmrcBn-153" target="sMFrb6Sxw22Ko-RmrcBn-156">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-153" value="f_getls()`" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="2130" y="917.5" width="56" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-154" value="kospi200" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="sMFrb6Sxw22Ko-RmrcBn-174" target="sMFrb6Sxw22Ko-RmrcBn-153">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2170" y="872.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-155" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="sMFrb6Sxw22Ko-RmrcBn-156" target="sMFrb6Sxw22Ko-RmrcBn-181">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-156" value="추출한 종목 리스트&lt;br&gt;(3만원 이하 코스피&amp;nbsp;&lt;br&gt;상장주)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="2200" y="897.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-157" value="false" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="sMFrb6Sxw22Ko-RmrcBn-177" target="sMFrb6Sxw22Ko-RmrcBn-160">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2830" y="927.5" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="2780" y="927.5" />
+              <mxPoint x="2780" y="845.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-158" value="for(종목리스트) - 예상 주가 뽑아오기" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2810" y="750.5" width="470" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-159" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-160" target="sMFrb6Sxw22Ko-RmrcBn-162">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-160" value="종목 하나&lt;br&gt;호가리스트" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-158">
+          <mxGeometry x="10" y="75" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-161" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-162" target="sMFrb6Sxw22Ko-RmrcBn-166">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-162" value="f_pedictPrice" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-158">
+          <mxGeometry x="105" y="80" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-163" value="0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-166" target="sMFrb6Sxw22Ko-RmrcBn-168">
+          <mxGeometry x="0.3309" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-164" value="예상주가," style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-166">
+          <mxGeometry x="0.0075" relative="1" as="geometry">
+            <mxPoint x="350" y="95" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-166">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="150" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="280" y="150" />
+              <mxPoint x="310" y="150" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-166" value="rsult" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-158">
+          <mxGeometry x="210" y="72.5" width="70" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-168" target="sMFrb6Sxw22Ko-RmrcBn-160">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-168" value="skip" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-158">
+          <mxGeometry x="220" y="170" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-169" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-170" target="sMFrb6Sxw22Ko-RmrcBn-160">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="250" />
+              <mxPoint x="30" y="250" />
+              <mxPoint x="30" y="115" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-170" value="dict에 추가&lt;br&gt;(key: 종목코드&lt;br&gt;value: 예상주가)" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-158">
+          <mxGeometry x="350" y="57.5" width="100" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-171" value="dict.keys()" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#F3EDFA;strokeColor=#D2BEE6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-158">
+          <mxGeometry x="320" y="132.5" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-172" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-158" source="sMFrb6Sxw22Ko-RmrcBn-171" target="sMFrb6Sxw22Ko-RmrcBn-171">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-173" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="sMFrb6Sxw22Ko-RmrcBn-174">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2160" y="872.5" as="sourcePoint" />
+            <mxPoint x="2160" y="917.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-174" value="Fdr lib" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="2135" y="857.5" width="46" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-175" value="장 열리면 호가 가져오기" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2360" y="752.5" width="380" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-176" value="종목별 호가 리스트&lt;br&gt;(2차원 배열)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-175">
+          <mxGeometry x="124" y="145" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-177" value="종목1호가[1]&lt;br&gt;==NULL&lt;br&gt;(장닫힘)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-175">
+          <mxGeometry x="274" y="130" width="100" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-178" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-175" source="sMFrb6Sxw22Ko-RmrcBn-176" target="sMFrb6Sxw22Ko-RmrcBn-177">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-179" value="repeat" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-175">
+          <mxGeometry x="299" y="60" width="50" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-180" value="true" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-175" source="sMFrb6Sxw22Ko-RmrcBn-177" target="sMFrb6Sxw22Ko-RmrcBn-179">
+          <mxGeometry x="0.125" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="324" y="100" />
+              <mxPoint x="324" y="100" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-181" value="f_getHoga" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-175">
+          <mxGeometry x="5" y="145" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-182" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-175" source="sMFrb6Sxw22Ko-RmrcBn-181" target="sMFrb6Sxw22Ko-RmrcBn-176">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-183" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-175" source="sMFrb6Sxw22Ko-RmrcBn-179" target="sMFrb6Sxw22Ko-RmrcBn-181">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-184" value="시작 -&amp;gt; 거래할 종목 추출" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2040" y="822.5" width="290" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-185" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" target="sMFrb6Sxw22Ko-RmrcBn-175">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3605" y="1102.5" />
+              <mxPoint x="2550" y="1102.5" />
+            </Array>
+            <mxPoint x="3605" y="1030.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-199" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="sMFrb6Sxw22Ko-RmrcBn-170">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3340" y="890.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-201" value="봇 알고리즘" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2340" y="660" width="1580" height="465" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-202" value="통장잔액" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-201">
+          <mxGeometry x="1370" y="28" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-204" value="보유주식" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-201">
+          <mxGeometry x="1370" y="68" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-200" value="기대수익에 따라 거른 종목들 리스트" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.database;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-201">
+          <mxGeometry x="1420" y="28" width="100" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-205" value="Vertical Container" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-201">
+          <mxGeometry x="1010" y="120" width="250" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-206" value="each(최종 추출된 각 종목)&lt;br&gt;[코드,기대값,당시가]" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-205">
+          <mxGeometry x="10" y="30" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-209" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="sMFrb6Sxw22Ko-RmrcBn-205" source="sMFrb6Sxw22Ko-RmrcBn-206">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60.02857142857192" y="90.01428571428573" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
