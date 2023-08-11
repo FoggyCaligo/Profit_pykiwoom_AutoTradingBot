@@ -15,6 +15,7 @@ import f_getls as getls
 
 
 
+
 class Hoga(QMainWindow):
      #생성자()-----------------------
     def __init__(self):
