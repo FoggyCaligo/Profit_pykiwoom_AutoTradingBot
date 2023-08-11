@@ -60,8 +60,8 @@ class Hoga(QMainWindow):
             self.stocksamount.append(amountarr)
             self.stocksprice.append(pricearr)
 
-        print(self.stocksamount)
-        print(self.stocksprice) 
+        # print(self.stocksamount)
+        # print(self.stocksprice) 
 
         
 
@@ -96,4 +96,3 @@ if __name__ == "__main__":
     app.exec_()
 
 
-    

@@ -49,10 +49,15 @@ def getList2():
     data.sort(key=lambda x:x[0])
     # print(data[0:10][1])
     # print(data[0:10][0])
-    print(data)
-    print(data[0:5])
-    print(data[:5][1])
-    ls = data[0:5]
+    rsult = []
+    for i in range(10):
+        rsult.append(data[i][1])
+
+
+
+    print(rsult)
+    return rsult
+
 
 
     # print(data)

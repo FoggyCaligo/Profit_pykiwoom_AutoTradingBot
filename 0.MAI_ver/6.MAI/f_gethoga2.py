@@ -49,11 +49,12 @@ class Hoga(QMainWindow):
         
 
 
-    def _handler_real_data(self, code, real_type, data):
-        amountarr = self.get_each_amountData(code)
-        pricearr = self.init_each_priceData(code)
+    def _handler_real_data(self):
+        # amountarr = self.get_each_amountData(code)
+        # pricearr = self.init_each_priceData(code)
         # print(amountarr)
         # print(pricearr)
+        print("handler")
         
 
 
