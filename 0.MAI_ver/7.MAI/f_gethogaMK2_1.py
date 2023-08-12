@@ -10,6 +10,7 @@ import f_getls as getls
 import f_logic_fin as logic
 
 
+from pykiwoom.kiwoom import *
 
 
 
@@ -27,29 +28,46 @@ class Hoga(QMainWindow):
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
         QTimer.singleShot(1000 * 2, self.CommmConnect)
 
+
+
+        #거래용 인스턴스 생성
+        #연결
+        self.kiwoom=Kiwoom()
+        self.kiwoom.CommConnect(block=True)
+        self.state = self.kiwoom.GetConnectState()
+        self.account = self.kiwoom.GetLoginInfo("ACCNO")[0]#내 계좌 중 2번째 계좌  불러오기
+        if(self.state==0):
+            print("연결안됨")
+        elif self.state==1:
+            print("연결완료")
+
+
+
          #변수선언
         self.stocks=[]#  [   [종목코드, [호가잔량],[호가] ]    ,
         self.tradingstocks = [] #[[종목명,기대주가,당시시가(중간가격)]]
         
+
+
         #거래할 종목들 코드리스트 받아오기
         #zero
         self.codes = getls.getList2()       
         
 
     #실시간 실행 함수-------------------
-    def _handler_real_data(self):
+    def _handler_real_data(self,code,real_type,data):
         print("handler")
 
+        if self.real_type == "주식우선호가":
+            while(True):
+                self.first_get_hoga()#self.stocks 초기화
+                if(self.stocks[0][1][0] != ''):
+                    self.second_get_future_price()
+                    #third#------
 
-        while(True):
-            self.first_get_hoga()#self.stocks 초기화
-            if(self.stocks[0][1][0] != ''):
-                self.second_get_future_price()
-                #third#------
 
-
-            else:
-                print("market not opened yet")
+                else:
+                    print("market not opened yet")
 
 
 
@@ -106,6 +124,20 @@ class Hoga(QMainWindow):
 
 
 
+    def get_currPrice(self,code):#현재가 가져오기
+        return  self.GetCommRealData(code, 10)
+
+
+    #매수
+    def buy(self,StockCode, Qty, Price):
+        self.kiwoom.SendOrder("","0000",self.account, 1,StockCode,Qty,Price,'00',"")#주문이름,화면명,계좌번호,주문유형(1매수2매도3매수취소4매도취소5매수정정6매도정정),주식종목코드,주문수량,주문단가,'00':지정가'03':시장가,원주문번호로 주문 정정시 사용. 디폴트 : ""   
+    #매도
+    def sell(self,StockCode, Qty, Price):
+        self.kiwoom.SendOrder("","0000",self.account, 2,StockCode,Qty,Price,'00',"")
+
+
+
+
 
 
 
@@ -127,7 +159,6 @@ class Hoga(QMainWindow):
                               screen_no, code_list, fid_list, real_type)
         self.statusBar().showMessage("구독 신청 완료")
 
-
     def DisConnectRealData(self, screen_no):
         self.ocx.dynamicCall("DisConnectRealData(QString)", screen_no)
         self.statusBar().showMessage("구독 해지 완료")
@@ -138,6 +169,13 @@ class Hoga(QMainWindow):
 
     def __del__(self):
         self.DisConnectRealData("1000")     
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

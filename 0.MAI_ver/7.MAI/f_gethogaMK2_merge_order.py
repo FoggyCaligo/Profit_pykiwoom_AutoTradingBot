@@ -10,6 +10,8 @@ import f_getls as getls
 import f_logic_fin as logic
 
 
+from pykiwoom.kiwoom import *
+
 
 
 
@@ -27,13 +29,32 @@ class Hoga(QMainWindow):
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
         QTimer.singleShot(1000 * 2, self.CommmConnect)
 
+        #주문용 객체
+        self.kiwoom=Kiwoom()
+        self.kiwoom.CommConnect(block=True)
+        state = self.kiwoom.GetConnectState()
+        self.account = self.kiwoom.GetLoginInfo("ACCNO")[0]#내 계좌 중 2번째 계좌  불러오기
+        if(state==0):
+            print("연결안됨")
+        elif state==1:
+            print("연결완료")
+
+
+
+
          #변수선언
         self.stocks=[]#  [   [종목코드, [호가잔량],[호가] ]    ,
         self.tradingstocks = [] #[[종목명,기대주가,당시시가(중간가격)]]
         
         #거래할 종목들 코드리스트 받아오기
         #zero
-        self.codes = getls.getList2()       
+        self.codes = getls.getList2()    
+
+
+
+
+
+
         
 
     #실시간 실행 함수-------------------

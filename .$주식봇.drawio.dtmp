@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-08-11T10:32:18.701Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="2OTlHoQjz-JQOT8SK-ZD" version="21.6.1" type="device">
+<mxfile host="Electron" modified="2023-08-11T10:33:04.429Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="WUPiK5ZuCyq527A23YO8" version="21.6.1" type="device">
   <diagram name="페이지-1" id="1V1hIyzYWLw6n8yJ7-vo">
-    <mxGraphModel dx="775" dy="452" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="755" dy="440" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1334,6 +1334,9 @@
         </mxCell>
         <mxCell id="sMFrb6Sxw22Ko-RmrcBn-408" value="추출한 종목 리스트&lt;br&gt;(3만원 이하 코스피&amp;nbsp;&lt;br&gt;상장주)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="sMFrb6Sxw22Ko-RmrcBn-401">
           <mxGeometry x="160" y="76.25" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sMFrb6Sxw22Ko-RmrcBn-409" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="3390" y="2460" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
