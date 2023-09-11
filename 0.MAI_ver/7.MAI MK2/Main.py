@@ -4,60 +4,55 @@ from PyQt5.QAxContainer import *
 from PyQt5.QtCore import *
 import datetime
 
+import f_getls as getls
+import f_logic_fin as logic
 
 
-
-
-
-
+from pykiwoom.kiwoom import *
 
 
 class Hoga(QMainWindow):
-    
+
+    #초기화 함수
     def __init__(self):
+
+        #변수 선언
+        self.codes = getls.getList2()
+        # self.input = 1000000    #(백만) -> 모의투자용 테스트. 실전에서는 운용 자금만큼.
+        
+
+
         super().__init__()
-        self.setWindowTitle("주식호가잔량")
-        # self.setGeometry(300, 300, 300, 400)
+        self.setWindowTitle("주식")
         self.ocx = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self.ocx.OnEventConnect.connect(self.connect)
-        self.ocx.OnReceiveRealData.connect(self._handler_real_data)
-        # 2초 후에 로그인 진행
-        QTimer.singleShot(1000 * 2, self.CommmConnect)
-        self.code = "005930"
-       
+        self.ocx.OnReceiveRealData.connect(self.handler_real_data)
+        QTimer.singleShot(1000*2,self.CommConnect)
 
-        self.stocksamount = []
-        self.stocksprice = []
-        self.middle = 10
+    def handler_real_data(self,code,real_type, data):
+            # print("handler")
 
-    def get_each_amountData(self,code):
-        rsult = []
-        for i in reversed(range(10)):
-            rsult.append(self.GetCommRealData(code,71+i))
-        for i in range(10):
-            rsult.append(self.GetCommRealData(code,61+i))
-        return rsult
+            # while(True):
+            #     self.first_get_hoga()
+            #     if(self.stocks[0][1][0] != ''):
+            #         self.second_get_future_price()
+            #     else:
+            #         print("market not opened yet")
+            print("handler")
+        
 
     
-    def init_each_priceData(self,code):
-        rsult = []
-        for i in reversed(range(10)):
-            rsult.append(self.GetCommRealData(code,51+i))
-        for i in range(10):
-            rsult.append(self.GetCommRealData(code,41+i))
-        return rsult
+
+
+
+
+
+
+
+
+
         
-
-
-    def _handler_real_data(self):
-         amountarr = self.get_each_amountData(code)
-         pricearr = self.init_each_priceData(code)
-         print(amountarr)
-         print(pricearr)
-        #print("handler")
-        
-
-
+#  기타 함수
     def connect(self):
         self.SetRealReg("1000", "005930", "41", 0)
 

@@ -39,18 +39,18 @@ class Hoga(QMainWindow):
     #실시간 실행 함수-------------------
     def _handler_real_data(self):
         print("handler")
+        print(self.stocks)
 
-
-        while(True):
-            self.first_get_hoga()#self.stocks 초기화
-            if(self.stocks[0][1][0] != ''):
-                self.second_get_future_price()
+        
+        self.first_get_hoga()#self.stocks 초기화
+        if(self.stocks[0][1][0] != ''):
+            self.second_get_future_price()
                 #third#------
 
 
-            else:
-                print("market not opened yet")
-
+        else:
+            print("market not opened yet")
+        
 
 
 
@@ -68,7 +68,7 @@ class Hoga(QMainWindow):
         self.tradingstocks.clear()
         for each_stock in self.stocks: #[   [종목코드, [호가잔량],[호가] ]    ,[종목코드, [호가잔량],[호가]].. ]
             temp = []
-            expec_price_index = logic.calc_assumePriceIndex(each_stock[1])
+            expec_price_index = logic.calc_assumePriceIndex(int(each_stock[1]))
             if expec_price_index == 0 : continue#수익 리턴이 0이 나오면 제끼기
             middle_price = each_stock[2][int(len(each_stock[2])/2)]
             expec_price = each_stock[2][expec_price_index]

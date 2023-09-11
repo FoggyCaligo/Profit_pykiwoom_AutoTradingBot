@@ -53,6 +53,3 @@ def decision(amount_arr,price_arr):
         else: return 0
 
 
-
-print(decision(amount,price))
-

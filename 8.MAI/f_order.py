@@ -6,7 +6,10 @@ from pykiwoom.kiwoom import *
 kiwoom=Kiwoom()
 kiwoom.CommConnect(block=True)
 state = kiwoom.GetConnectState()
-account = kiwoom.GetLoginInfo("ACCNO")[1]#내 계좌 중 2번째 계좌  불러오기
+accounts=kiwoom.GetLoginInfo("ACCNO")#전체 계좌 리스트
+account = accounts[0]
+
+
 if(state==0):
     print("연결안됨")
 elif state==1:
@@ -15,6 +18,8 @@ elif state==1:
 
 
 
+print(df)
+
 
 #매수
 def buy(StockCode, Qty, Price):
@@ -22,5 +27,6 @@ def buy(StockCode, Qty, Price):
 #매도
 def sell(StockCode, Qty, Price):
     kiwoom.SendOrder("","0000",account, 2,StockCode,Qty,Price,'00',"")
+
 
 
