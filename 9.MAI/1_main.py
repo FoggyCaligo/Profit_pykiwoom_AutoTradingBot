@@ -23,7 +23,7 @@ class Main(QMainWindow):
          #변수선언
         self.stocks=[]#  [   [종목코드, [호가잔량],[호가] ]    ,
         self.tradingstocks = [] #[[종목명,기대주가,당시시가(중간가격)]]
-        
+
         #거래할 종목들 코드리스트 받아오기
         self.codes = getls.getList()   
 
@@ -35,6 +35,10 @@ class Main(QMainWindow):
             print("종목:",each,"\n")
         print('\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
         
+
+
+
+
         pass
 
 

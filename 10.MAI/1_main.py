@@ -19,57 +19,28 @@ class Main(QMainWindow):
         self.ocx.OnEventConnect.connect(self.connect)
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
         QTimer.singleShot(1000 * 2, self.CommConnect)
-
-         #변수선언
-        self.stocks=[]#  [   [종목코드, [호가잔량],[호가] ]    ,
-        self.tradingstocks = [] #[[종목명,기대주가,당시시가(중간가격)]]
-        
         #거래할 종목들 코드리스트 받아오기
         self.codes = getls.getList()   
 
     #실행함수
     def _handler_real_data(self,code,real_type,data):
-        self.first_get_hoga()
 
-        for each in self.stocks:
-            print("종목:",each,"\n")
-        print('\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+
+        print(real_type)
         
-        pass
+        if real_type == "장시작시간":#장 시작 전--------------------------------
+            pass
+        elif real_type == "장중":#-------------------------------------------
+           print("장중")
+        elif real_type == "장종료10분전동시호가":#장 종료 10분전 동시호가---------
+            print("10분 전!")
+        else :#-----------------------------------------------------------
+            print("장 열리지 않음",real_type)
 
 
-#순서대로
-    def first_get_hoga(self):
-        self.stocks.clear()
-        for each in self.codes:
-            self.stocks.append(self.get_each_stock_data(each))
 
-    def second_get_future_price(self):
-        self.tradingstocks.clear()
-        for each_stock in self.stocks: #[   [종목코드, [호가잔량],[호가] ]    ,[종목코드, [호가잔량],[호가]].. ]
-            temp = []
-            expec_price_index = logic.calc_assumePriceIndex(int(each_stock[1]))
-            if expec_price_index == 0 : continue#수익 리턴이 0이 나오면 제끼기
-            middle_price = each_stock[2][int(len(each_stock[2])/2)]
-            expec_price = each_stock[2][expec_price_index]
-            temp.append(each_stock[0])
-            temp.append(expec_price)
-            temp.append(middle_price)
-            self.tradingstocks.append(temp)
-    def get_each_stock_data(self,code):
-        rsult = []
-        temp_amount = []
-        temp_price=[]
-        for i in reversed(range(10)):
-            temp_amount.append(self.GetCommRealData(code,71+i))#매수호가
-            temp_price.append(self.GetCommRealData(code,51+i))#매수수량
-        for i in range(10):
-            temp_amount.append(self.GetCommRealData(code,61+i))#매도호가
-            temp_price.append(self.GetCommRealData(code,41+i))#매도수량
-        rsult.append(code)
-        rsult.append(temp_amount)
-        rsult.append(temp_price)
-        return rsult
+
+
 
 
 #기타 필요한 함수들------------------------------------

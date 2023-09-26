@@ -16,7 +16,7 @@ def getList():
         each = str(each)
         currPrice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))#오늘자 주가 뽑기
         currPrice = int(currPrice['Open'].values)#오늘자 주가 정수형으로 변환
-        if(currPrice<30000):#3만원 이하 종목 뽑기
+        if(10000<currPrice and currPrice<50000):#만원 이상 5만원 이하인 종목 뽑기
             stocklist.append(each)
             print(each)
         
