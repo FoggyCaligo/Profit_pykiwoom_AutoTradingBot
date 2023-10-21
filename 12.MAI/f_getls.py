@@ -8,13 +8,13 @@ ks100 = df_kospi[:100]#코스피 상위 100종목 뽑기
 
 
 stocklist = []
-print(stocklist)
+
 
 
 def getList():
     for each in ks100['Code']:
         each = str(each)
-        currPrice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))#오늘자 주가 뽑기
+        currPrice = (fdr.DataReader(symbol=each,start=str(dt.date.today()- dt.timedelta(days=3))))#오늘자 주가 뽑기
         currPrice = int(currPrice['Open'].values)#오늘자 주가 정수형으로 변환
         if(10000<currPrice and currPrice<50000):#만원 이상 5만원 이하인 종목 뽑기
             stocklist.append(each)
@@ -28,3 +28,21 @@ def getList():
 #     for each in ks100['Code']:
 #         each=str(each)
 #         currprice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))#오늘자 주가 뽑기
+
+currPrice_dict = {}
+
+def getdict():
+    for each in ks100['Code']:
+        each = str(each)
+        currPrice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))
+        print(currPrice)
+        currPrice = int(currPrice['Open'].values)
+        if(10000<currPrice and currPrice<50000):
+            currPrice_dict[each] = currPrice
+    print(currPrice_dict)
+    return currPrice_dict
+
+
+
+test =getdict()
+print(test)
