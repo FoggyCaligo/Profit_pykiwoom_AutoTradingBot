@@ -1,7 +1,5 @@
 from pykiwoom.kiwoom import *
 
-
-
 #연결
 kiwoom=Kiwoom()
 kiwoom.CommConnect(block=True)
@@ -9,15 +7,10 @@ state = kiwoom.GetConnectState()
 accounts=kiwoom.GetLoginInfo("ACCNO")#전체 계좌 리스트
 account = accounts[0]
 
-
 if(state==0):
     print("연결안됨")
 elif state==1:
     print("연결완료")
-
-
-
-
 
 #매수
 def buy(StockCode, Qty, Price):

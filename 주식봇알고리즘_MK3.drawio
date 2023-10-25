@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-10-13T12:37:48.301Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="NuNgTvapSi_Q9V8fsVed" version="21.6.1" type="device">
+<mxfile host="Electron" modified="2023-10-25T03:01:15.793Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.1 Chrome/112.0.5615.204 Electron/24.6.1 Safari/537.36" etag="3KG1iDZ5WK2rsJoiuQni" version="21.6.1" type="device">
   <diagram id="YGjR6Hj0XNhJJaSU7bKo" name="페이지-1">
-    <mxGraphModel dx="4049" dy="5" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2834" dy="-698" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -97,7 +97,7 @@
         <mxCell id="ONEI5FyIC6HbMwGvxSEx-28" value="준비/초기화&lt;br&gt;(init)" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="10" y="2750" width="100" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="zDKP9dz1NQDqdbnWFTVg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ONEI5FyIC6HbMwGvxSEx-31" target="ONEI5FyIC6HbMwGvxSEx-58">
+        <mxCell id="zDKP9dz1NQDqdbnWFTVg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="ONEI5FyIC6HbMwGvxSEx-31" target="ONEI5FyIC6HbMwGvxSEx-58" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ONEI5FyIC6HbMwGvxSEx-31" value="시작" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">

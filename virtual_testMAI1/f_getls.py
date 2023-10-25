@@ -12,7 +12,8 @@ class stock:
 
         bottomprice = random.randrange(10000,50000)
         for i in range(self.hoga_len):
-            tick = 
+            pass
+
 
 
         
