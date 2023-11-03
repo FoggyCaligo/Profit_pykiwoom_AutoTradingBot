@@ -1,5 +1,5 @@
 파이썬
-PyQt
+
 
 
 (pip)
@@ -7,6 +7,10 @@ FinanceDataReader
 pykiwoom
 datetime
 pip install pandas pyqt5 matplotlib
+pyqt5
+bs4
+numpy
+
 
 
 

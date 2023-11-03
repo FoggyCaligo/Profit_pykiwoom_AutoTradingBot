@@ -31,6 +31,6 @@ def sell(StockCode, Qty, Price):
 
 
 
-class StockManager:
-    code = -1
-    ex_price = 0
+# class StockManager:
+#     code = -1
+#     ex_price = 0

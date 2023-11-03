@@ -36,7 +36,8 @@ def getdict():
         each = str(each)
         currPrice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))
         print(currPrice)
-        currPrice = int(currPrice['Open'].values)
+        currprice_s = currPrice['Open'].values
+        currPrice = int(currprice_s)
         if(10000<currPrice and currPrice<50000):
             currPrice_dict[each] = currPrice
     print(currPrice_dict)
