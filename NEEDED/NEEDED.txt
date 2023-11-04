@@ -1,8 +1,15 @@
-파이썬
+아나콘다 https://repo.anaconda.com/archive/
+Anaconda3-2022.05-Windows-x86.exe
+
+
+
+파이썬 32bit
 
 
 
 (pip)
+pip install pandas pyqt5 matplotlib finance-datareader numpy
+
 FinanceDataReader
 pykiwoom
 datetime

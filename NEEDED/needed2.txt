@@ -1,0 +1,59 @@
+<vs 빌드툴 >-----------------------------------------------------------------------------
+https://visualstudio.microsoft.com/ko/visual-cpp-build-tools/
+vs 빌드툴 설치
+
+
+
+<아나콘다 & 파이썬>-----------------------------------------------------------------------
+
+아나콘다 https://repo.anaconda.com/archive/
+Anaconda3-2022.05-Windows-x86.exe
+
+win -> anaconda prompt(관리자 권한으로 실행)
+
+conda create -n py38 python=3.8
+conda activate py38
+conda install pywin32
+conda update -n base -c defaults conda
+conda install zlib
+pip install Pillow==9.5.0
+pip install pandas PyQt5 matplotlib finance-datareader numpy pykiwoom 
+
+<yfinance로 대체할 경우>
+pip install yfinance pymysql pandas_datareader
+
+
+
+!)
+pip install zlib-state
+pip install --upgrade pip setuptools wheel
+pip install opencv-python
+pip install Pillow==2.5.0
+python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade Pillow
+python3 -m pip install --upgrade defusedxml olefile
+!)
+python3 -m pip install -U --force-reinstall pip
+pip install pandas PyQt5 matplotlib finance-datareader numpy pykiwoom 
+
+
+
+
+
+
+
+
+
+
+<키움증권 api>-----------------------------------------------------------------------\
+
+KOA STUDIO
+키움오픈API https://www.kiwoom.com/h/customer/download/VOpenApiInfoView
+
+
+
+
+
+
+
+
