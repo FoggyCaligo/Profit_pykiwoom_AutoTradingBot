@@ -2,9 +2,13 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QAxContainer import *
 from PyQt5.QtCore import *
+# import PyQt5 as pyqt
+
+# from PyQt5 import *
+
 import datetime
 
-import f_getls as getls
+import f_getdict as getdict
 import f_logic as logic
 import f_order as order
 
@@ -27,10 +31,11 @@ class Main(QMainWindow):
         self.tradingstocks = [] #[[종목명,기대주가,당시시가(중간가격)]]
 
         #거래할 종목들 코드리스트 받아오기
-        self.currPricedict = getls.getdict()  
+        self.currPricedict = getdict.getls()  
         self.expecPricedict = {}
 
         self.stocklsamount = len(self.expecPricedict)
+        
         
     #실행함수
     def _handler_real_data(self,code,real_type,data):
@@ -49,7 +54,7 @@ class Main(QMainWindow):
             if self.expecPricedict[code] > self.currPricedict[code][curr_price] + curr_price*2/1000 + curr_price*15/10000 + curr_price*2/100:#예상가 > 현재가+세금(0.2%)+수수료(0.015%)+2%수익
                 #order.buy(code, ,curr_price)
                 # -> 매수 수량을 정하는 알고리즘 필요
-
+                order.buy(code,1,curr_price)
                 pass
             #매도판단
 
@@ -91,7 +96,7 @@ class Main(QMainWindow):
 #순서대로
     def first_get_hoga(self):
         self.stocks.clear()
-        for each in self.codes:
+        for each in self.currPricedict:
             self.stocks.append(self.get_each_stock_data(each))
 
 
@@ -133,7 +138,7 @@ class Main(QMainWindow):
 #기타 필요한 함수들------------------------------------
     def connect(self):
         strarr = ""
-        for each in self.codes:
+        for each in self.currPricedict:
             strarr += each+";"
         strarr = strarr[:-1]
         self.SetRealReg("1000",strarr, "41", 0)

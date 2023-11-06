@@ -6,6 +6,10 @@ import datetime
 
 import f_getls as getls
 import f_logic as logic
+import f_order as order
+
+import f_getdict as getdict
+
 
 # from pykiwoom.kiwoom import *
 
@@ -20,7 +24,7 @@ class Main(QMainWindow):
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
         QTimer.singleShot(1000 * 2, self.CommConnect)
         #거래할 종목들 코드리스트 받아오기
-        self.codes = getls.getList()   
+        self.codes = getls.getls()   
 
     #실행함수
     def _handler_real_data(self,code,real_type,data):

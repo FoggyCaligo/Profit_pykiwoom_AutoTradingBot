@@ -11,7 +11,7 @@ stocklist = []
 print(stocklist)
 
 
-def getList():
+def getls():
     for each in ks100['Code']:
         each = str(each)
         currPrice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))#오늘자 주가 뽑기
@@ -28,3 +28,5 @@ def getList():
 #     for each in ks100['Code']:
 #         each=str(each)
 #         currprice = (fdr.DataReader(symbol=each,start=str(dt.date.today())))#오늘자 주가 뽑기
+
+
