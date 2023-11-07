@@ -4,7 +4,7 @@ from PyQt5.QAxContainer import *
 from PyQt5.QtCore import *
 import datetime
 
-import f_getls as getls
+# import f_getls as getls
 import f_logic as logic
 
 import f_getdict as getdict
@@ -25,14 +25,16 @@ class Main(QMainWindow):
         # self.codes = getls.getList()   
 
         self.codedict = getdict.getdict()
+
+        print("test1")
     #실행함수
     def _handler_real_data(self,code,real_type,data):
+        print("test2")
 
-
-        # print(real_type)
+        print(real_type)
         
         if real_type == "장시작시간":#장 시작 전--------------------------------
-        
+            print("장시작시간")
             
             pass
         elif real_type == "주식호가잔량":#확인 완료-------------------------------------------
