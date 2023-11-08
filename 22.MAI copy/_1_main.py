@@ -4,13 +4,15 @@ from PyQt5.QAxContainer import *
 from PyQt5.QtCore import *
 import datetime
 
-import f_getdict as getdict
-import f_logic_cp as logic
+# import f_getdict as getdict
+# import f_logic_cp as logic
 import time
 
-# import stockManager as manager
+import _2_stockManager as manager
+import _3_f_getdict as getdict
 
-import f_order as order
+# import stockManager as manager
+# import f_order as order
 
 # from pykiwoom.kiwoom import *
 
@@ -24,7 +26,7 @@ class Main(QMainWindow):
         self.ocx.OnEventConnect.connect(self.connect)
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
         QTimer.singleShot(1000 * 2, self.CommConnect)
-
+        
          #변수선언
         self.stocks=[]#  [   [종목코드, [호가잔량],[호가] ]    ,
         self.tradingstocks = [] #[[종목명,기대주가,당시시가(중간가격)]]
@@ -33,36 +35,45 @@ class Main(QMainWindow):
         # self.codes = getls.getList() 
         self.codes = getdict.getls()  
 
+        self.managers = []
+
+        for each in self.codes:
+            self.managers.append(manager.StockManager(each))
+
+
     #실행함수#----------------------------------------------------------------
     def _handler_real_data(self,code,real_type,data):
         #호가 확인
-        print("handler")
-        self.first_get_hoga()
-        for each in self.stocks:
-            print("종목:",each,"\n")
-        print('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
+        # print("handler")
+        # self.first_get_hoga()
+        # for each in self.stocks:
+        #     print("종목:",each,"\n")
+        # print('ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ')
         
-        print(real_type)
-        
-        # if(real_type == "주식호가잔량"):
-        #     print("장중")
-        #     now = time.localtime()
-        #     if(now.tm_hour==15):#장마감30분전
-        #         #sell_ all
-                
-        #         pass
-        #     else:#장중
-        #         for each in self.manager:
-        #             hoga = self.get_each_stock_data(each.get_code())
-        #             each.buy(hoga[2],hoga[1])
-        #             print(hoga[0],"buy")
-        #         for each in self.manager:
-        #             hoga = self.get_each_stock_data(each.get_code())
-        #             each.sell(hoga[2],hoga[1])
-        #             print(hoga[0],"sell")
-        # else:
-        #     print("장 아님")
-        #     pass
+        # print(real_type)
+
+
+
+
+        if(real_type == "주식호가잔량"):
+            print("장중")
+            now = time.localtime()
+            if(now.tm_hour==15):#장마감30분전
+                #sell_ all
+
+                pass
+            else:#장중
+                for each in self.manager:
+                    hoga = self.get_each_stock_data(each.get_code())
+                    each.buy(hoga[2],hoga[1])
+                    print(hoga[0],"buy")
+                for each in self.manager:
+                    hoga = self.get_each_stock_data(each.get_code())
+                    each.sell(hoga[2],hoga[1])
+                    print(hoga[0],"sell")
+        else:
+            print("장 아님")
+            pass
 
 
 
@@ -76,23 +87,6 @@ class Main(QMainWindow):
 
 
 #순서대로
-    def first_get_hoga(self):
-        self.stocks.clear()
-        for each in self.codes:
-            self.stocks.append(self.get_each_stock_data(each))
-
-    def second_get_future_price(self):
-        self.tradingstocks.clear()
-        for each_stock in self.stocks: #[   [종목코드, [호가잔량],[호가] ]    ,[종목코드, [호가잔량],[호가]].. ]
-            temp = []
-            expec_price_index = logic.calc_assumePriceIndex(int(each_stock[1]))
-            if expec_price_index == 0 : continue#수익 리턴이 0이 나오면 제끼기
-            middle_price = each_stock[2][int(len(each_stock[2])/2)]
-            expec_price = each_stock[2][expec_price_index]
-            temp.append(each_stock[0])
-            temp.append(expec_price)
-            temp.append(middle_price)
-            self.tradingstocks.append(temp)
     def get_each_stock_data(self,code):
         rsult = []
         temp_amount = []
@@ -107,7 +101,6 @@ class Main(QMainWindow):
         rsult.append(temp_amount)
         rsult.append(temp_price)
         return rsult
-
 
 #기타 필요한 함수들------------------------------------
     def connect(self):

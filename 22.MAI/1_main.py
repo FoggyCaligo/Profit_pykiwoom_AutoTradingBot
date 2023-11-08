@@ -9,7 +9,6 @@ import f_logic_cp as logic
 import time
 
 # import stockManager as manager
-
 import f_order as order
 
 # from pykiwoom.kiwoom import *
@@ -37,6 +36,7 @@ class Main(QMainWindow):
     def _handler_real_data(self,code,real_type,data):
         #호가 확인
         print("handler")
+        print()
         self.first_get_hoga()
         for each in self.stocks:
             print("종목:",each,"\n")
@@ -44,28 +44,7 @@ class Main(QMainWindow):
         
         print(real_type)
         
-        # if(real_type == "주식호가잔량"):
-        #     print("장중")
-        #     now = time.localtime()
-        #     if(now.tm_hour==15):#장마감30분전
-        #         #sell_ all
-                
-        #         pass
-        #     else:#장중
-        #         for each in self.manager:
-        #             hoga = self.get_each_stock_data(each.get_code())
-        #             each.buy(hoga[2],hoga[1])
-        #             print(hoga[0],"buy")
-        #         for each in self.manager:
-        #             hoga = self.get_each_stock_data(each.get_code())
-        #             each.sell(hoga[2],hoga[1])
-        #             print(hoga[0],"sell")
-        # else:
-        #     print("장 아님")
-        #     pass
-
-
-
+        
 
 
 
@@ -76,23 +55,6 @@ class Main(QMainWindow):
 
 
 #순서대로
-    def first_get_hoga(self):
-        self.stocks.clear()
-        for each in self.codes:
-            self.stocks.append(self.get_each_stock_data(each))
-
-    def second_get_future_price(self):
-        self.tradingstocks.clear()
-        for each_stock in self.stocks: #[   [종목코드, [호가잔량],[호가] ]    ,[종목코드, [호가잔량],[호가]].. ]
-            temp = []
-            expec_price_index = logic.calc_assumePriceIndex(int(each_stock[1]))
-            if expec_price_index == 0 : continue#수익 리턴이 0이 나오면 제끼기
-            middle_price = each_stock[2][int(len(each_stock[2])/2)]
-            expec_price = each_stock[2][expec_price_index]
-            temp.append(each_stock[0])
-            temp.append(expec_price)
-            temp.append(middle_price)
-            self.tradingstocks.append(temp)
     def get_each_stock_data(self,code):
         rsult = []
         temp_amount = []
