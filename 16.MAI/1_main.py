@@ -6,7 +6,7 @@ import datetime
 
 import f_getdict as getdict
 import f_logic_cp as logic
-
+import time
 
 # from pykiwoom.kiwoom import *
 
@@ -32,6 +32,7 @@ class Main(QMainWindow):
     #실행함수#----------------------------------------------------------------
     def _handler_real_data(self,code,real_type,data):
         #호가 확인
+        print("handler")
         self.first_get_hoga()
         for each in self.stocks:
             print("종목:",each,"\n")
@@ -39,17 +40,19 @@ class Main(QMainWindow):
         
         print(real_type)
         
-        if(real_type == "주식호가잔량"):
-            print("장중")
-            now = datetime.now()
-            if(now.hour==15):
-                #sell_ all
+        # if(real_type == "주식호가잔량"):
+        #     print("장중")
+        #     now = time.localtime()
+        #     if(now.tm_hour==15):#장마감30분전
+        #         #sell_ all
                 
-                pass
+        #         pass
+        #     else:#장중
+        #         pass
                 
-        else:
-            print("장 아님")
-            pass
+        # else:
+        #     print("장 아님")
+        #     pass
 
 
 

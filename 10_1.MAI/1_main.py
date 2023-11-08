@@ -7,7 +7,7 @@ import datetime
 import f_getls as getls
 import f_logic as logic
 
-import f_getdict as getdict
+import f_getdict as qgetdict
 
 # from pykiwoom.kiwoom import *
 
@@ -43,6 +43,8 @@ class Main(QMainWindow):
 
         elif real_type == "장종료10분전동시호가":#장 종료 10분전 동시호가---------
             print("10분 전!")
+
+        
 
 
 

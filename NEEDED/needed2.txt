@@ -17,7 +17,7 @@ conda install pywin32
 conda update -n base -c defaults conda
 conda install zlib
 pip install Pillow==9.5.0
-pip install pandas PyQt5 matplotlib finance-datareader numpy pykiwoom bs4
+pip install pandas==2.0.3 PyQt5 matplotlib finance-datareader numpy pykiwoom bs4
 
 <yfinance로 대체할 경우>
 pip install yfinance pymysql pandas_datareader
