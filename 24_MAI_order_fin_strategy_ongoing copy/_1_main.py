@@ -44,15 +44,18 @@ class Main(QMainWindow):
     #실행함수#----------------------------------------------------------------
     def _handler_real_data(self,code,real_type,data):
         print(code)
-        
-        if real_type == "주식호가잔량": #장 중이면
 
+        if real_type == "주식호가잔량": #장 중이면---
             hoga = self.get_each_stock_data(code)
             if time.localtime().tm_hour == 15:
                 #모두 매도
+                for each in self.codes:
+                    if self.haveamounts[each] != 0:
+                        curr_price = hoga[2][int(len(hoga[1])/2)]
+                        self.sell(each,self.haveamounts[each],curr_price)
+
                 pass
                 return
-
             #buy decision
             if self.haveamounts[code] == 0:
                 # if(self.calc_rev(hoga[1],hoga[2])!=0):
@@ -65,7 +68,7 @@ class Main(QMainWindow):
         
                     tax = predprice*0.0315
                     print("rev:",predprice-curr_price)
-                    print("2%:",curr_price*0.7/100)
+                    print("2%:",curr_price*0.7/100)#0.7% 수익 나면
                     if(float(predprice - curr_price) > float(curr_price)/0.7*100.0):
                         
                         self.buyprices[code]=curr_price
@@ -115,6 +118,7 @@ class Main(QMainWindow):
                 sellidx+=1
         rsult = int((sellidx+buyidx)/2)
         return rsult
+        
 
     # def calc_rev(self,hoga_arr,price_arr):
     #     expec = self.predict_priceidx(price_arr)
