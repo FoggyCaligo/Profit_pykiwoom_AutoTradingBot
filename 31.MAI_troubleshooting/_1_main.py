@@ -54,18 +54,19 @@ class Main(QMainWindow):
        
         hoga = self.get_each_stock_data(code)
 
+        # print(hoga[2])
+
         #MK2-------------------------------------------------
         curr_price = abs(int(hoga[2][int(len(hoga[1])/2)]))
         pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[1])]))
         qty = abs(int(self.budjet/10/curr_price))
 
-        if pred_price - curr_price > curr_price*1.1/100:    
+        if pred_price - curr_price >= curr_price*0.5/100:    
             self.buy(code,qty,curr_price)
-            print(code,": buy",curr_price,"amount:",qty)
+            print(code,": buy",curr_price)
 
             self.sell(code,qty,pred_price)
-            print(code,": sell",pred_price,"amount:",qty)
-        # time.sleep(0.0005)
+            print(code,": sell",pred_price)
 
         #MK3-------------------------------------------------
         # curr_idx = int(len(hoga[1])/2)
