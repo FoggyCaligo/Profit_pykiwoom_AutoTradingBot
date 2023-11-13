@@ -76,11 +76,17 @@ class Main(QMainWindow):
 
         if pred_idx >= curr_idx + 2:    
             self.buy(code,qty,curr_price)
+            self.haveamounts[code] = (self.budjet/10/int(curr_price))
             print(code,": buy",curr_price,"amount:",qty)
 
             self.sell(code,qty,pred_price)
             print(code,": sell",pred_price,"amount:",qty)
-            
+        
+
+        if time.localtime().tm_hour == 15:
+            #sell all remainings
+            pass
+                
 
 #순서대로
 
