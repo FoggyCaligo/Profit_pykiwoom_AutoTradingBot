@@ -5,8 +5,6 @@ from PyQt5.QAxContainer import *
 from PyQt5.QtCore import *
 import datetime
 import pandas as pd
-import atexit
-
 
 import pythoncom
 import time
@@ -31,7 +29,6 @@ class Main(QMainWindow):
         self.ocx = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self.ocx.OnEventConnect.connect(self.connect)
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)
-        # self.ocx.OnReceiveChejanData.connect(self._receive_chejan_data)
         QTimer.singleShot(1000 * 2, self.CommConnect)
          #변수선언
         
@@ -57,25 +54,22 @@ class Main(QMainWindow):
     #실행함수#----------------------------------------------------------------
     def _handler_real_data(self,code,real_type,data):
         print(code)
-        
-        if real_type == "주식호가잔량": #장 중이면---    
-            hoga = self.get_each_stock_data(code)
-            #MK2-------------------------------------------------
-            curr_price = abs(int(hoga[2][int(len(hoga[1])/2)]))
-            pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[1])]))
-            qty = abs(int(self.budjet/10/curr_price))
+        hoga = self.get_each_stock_data(code)
+        #MK2-------------------------------------------------
+        curr_price = abs(int(hoga[2][int(len(hoga[1])/2)]))
+        pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[1])]))
+        qty = abs(int(self.budjet/10/curr_price))
 
-            if pred_price - curr_price > curr_price*1.001/100:    
-                self.buy(code,qty,curr_price)
-                print(code,": buy",curr_price,"amount:",qty)
-                self.sell(code,qty,pred_price)
-                print(code,": sell",pred_price,"amount:",qty)
+        if pred_price - curr_price > curr_price*0.7/100:    
+            self.buy(code,qty,curr_price)
+            print(code,": buy",curr_price,"amount:",qty)
+            self.sell(code,qty,pred_price)
+            print(code,": sell",pred_price,"amount:",qty)
 
-            if time.localtime().tm_hour == 15:
-                #sell all remainings
-                pass
-        else: print("장중 아님")           
-        
+        if time.localtime().tm_hour == 15:
+            #sell all remainings
+            pass
+                
 
 #순서대로
 
@@ -180,47 +174,7 @@ class Main(QMainWindow):
         self.statusBar().showMessage("구독 해지 완료")
     def GetCommRealData(self, code, fid):
         data = self.ocx.dynamicCall("GetCommRealData(QString, int)", code, fid) 
-        return data
-
-
-    # def get_remain_stocks(self):
-    #     price = self.ocx.dynamicCall("GetChejanData(int)",self.realType.RealType[""])
-
-    #잔고확인 함수
-    def _receive_chejan_data(self, gubun, item_cnt, fid_list):
-        print(gubun) # 1: 잔고 데이터
-        if gubun=='1':
-            print("잔고",fid_list)
-        #     code = self.get_chejan_data(9001)e
-
-        # print("코드",self.get_chejan_data(9001))
-        # print("주문가능수량",self.get_chejan_data(933))
-        # print("최우선매수호가",self.get_chejan_data(28))
-
-
-        # print(self.get_chejan_data(901))
-    def get_chejan_data(self, fid):
-        ret = self.ocx.dynamicCall("GetChejanData(int)", fid)
-        return ret
-    # def OnReceiveChejanData(self,sGubun,nItemCnt,sFidList):
-    #     if sGubun=="0":
-    #         # pass
-    #         code = self.ocx.dynamicCall("GetChejanData()","9001")#종목코드
-    #         qty = self.ocx.dynamicCall("GetChejanData()","933")#주문가능수량
-    #         print("잔량",code,qty)
-    #     elif sGubun=="1":
-    #         code = self.ocx.dynamicCall("GetChejanData()","9001")#종목코드
-    #         qty = self.ocx.dynamicCall("GetChejanData()","933")#주문가능수량
-    #         price = self.ocx.dynamicCall("GetChejanData()","28")#최우선 매수호가
-    #         print("잔량",code,qty)
-
-
-
-    def on_exit(self):
-        #get_remain_stock
-        #sell_all
-        pass
-
+        return data    
     def __del__(self):
         self.df.to_csv('./trade_record.csv',index=False)
         self.DisConnectRealData("1000")     
