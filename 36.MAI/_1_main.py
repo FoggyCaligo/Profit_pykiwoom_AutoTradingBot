@@ -82,34 +82,37 @@ class Main(QMainWindow):
     
     #실행함수#----------------------------------------------------------------
     def _handler_real_data(self,code,real_type,data):
-        # self.cancel_all_buyorder()
-        if self.is_cleared == False:
-            self.sell_all_remainings()
-            self.is_cleared
+        
+        if real_type == "주식호가잔량": #장 중이면---
+            # self.cancel_all_buyorder()
+            # if self.is_cleared == False:
+            #     self.sell_all_remainings()
+            #     self.is_cleared = True
 
-        print(code)
-        hoga = self.get_each_stock_data(code)
-        # print("type:",type(code))
-        #MK2-------------------------------------------------
-        curr_price = abs(int(hoga[2][int(len(hoga[1])/2)]))
-        pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[1])]))
-        qty = abs(int(self.budjet/10/curr_price))
+            print(code)
+            hoga = self.get_each_stock_data(code)
+            # print("type:",type(code))
+            #MK2-------------------------------------------------
+            curr_price = abs(int(hoga[2][int(len(hoga[1])/2)]))
+            pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[1])]))
+            qty = abs(int(self.budjet/10/curr_price))
 
-        if pred_price - curr_price > curr_price*0.5/100:    
-            self.buy(code,qty,curr_price)
-            print(code,": buy",curr_price,"amount:",qty)
+            if pred_price - curr_price > curr_price*0.7/100: #수익률   
+                self.buy(code,qty,curr_price)
+                print(code,": buy",curr_price,"amount:",qty)
 
-            self.sell(code,qty,pred_price)
-            print(code,": sell",pred_price,"amount:",qty)
-            self.predprices[code] = pred_price
+                self.sell(code,qty,pred_price)
+                print(code,": sell",pred_price,"amount:",qty)
+                self.predprices[code] = pred_price
 
-        if time.localtime().tm_hour == 15:
-            #sell all remainings
-            pass
+            if time.localtime().tm_hour == 15:
+                #sell all remainings
+                pass
+        else: print("장중 아님")
         
         print("btn",self.btn1.isChecked())
         if self.btn1.isChecked() == False:
-            self.sell_all_remainings()
+            # self.sell_all_remainings()
             # time.sleep(10)
             self.cancel_all_buyorder()
             self.df.to_csv('./trade_record.csv',index=False)

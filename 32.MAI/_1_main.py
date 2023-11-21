@@ -51,7 +51,9 @@ class Main(QMainWindow):
     #실행함수#----------------------------------------------------------------
     def _handler_real_data(self,code,real_type,data):
         print(code)
+       
         hoga = self.get_each_stock_data(code)
+
         #MK2-------------------------------------------------
         curr_price = abs(int(hoga[2][int(len(hoga[1])/2)]))
         pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[1])]))
@@ -60,8 +62,27 @@ class Main(QMainWindow):
         if pred_price - curr_price > curr_price*1.1/100:    
             self.buy(code,qty,curr_price)
             print(code,": buy",curr_price,"amount:",qty)
+
             self.sell(code,qty,pred_price)
             print(code,": sell",pred_price,"amount:",qty)
+        # time.sleep(0.0005)
+
+        #MK3-------------------------------------------------
+        # curr_idx = int(len(hoga[1])/2)
+        # pred_idx = self.predict_priceidx(hoga[2])
+
+        # curr_price = abs(int(hoga[2][int(len(hoga[1])/2)]))
+        # pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[2])]))
+        # qty = abs(int(self.budjet/10/curr_price))
+
+        # if pred_idx >= curr_idx + 2:    
+        #     self.buy(code,qty,curr_price)
+        #     self.haveamounts[code] = (self.budjet/10/int(curr_price))
+        #     print(code,": buy",caaaaaaaaaaaaaaaaaaaaaaaaaaaurr_price,"amount:",qty)
+
+        #     self.sell(code,qty,pred_price)
+        #     print(code,": sell",pred_price,"amount:",qty)
+        
 
         if time.localtime().tm_hour == 15:
             #sell all remainings
@@ -83,6 +104,8 @@ class Main(QMainWindow):
         hoga_arri = []
         for i in hoga_arr:
             hoga_arri.append(int(i))
+
+
         middle = int(len(hoga_arri)/2)
         buyidx = middle
         sellidx = middle+1
@@ -137,7 +160,7 @@ class Main(QMainWindow):
         rsult.append(temp_price)
         return rsult# [종목코드, [호가잔량],[호가] ]    ,
 
-#기타 필요한 함수들----------------
+#기타 필요한 함수들------------------------------------
     def connect(self):
         strarr = ""
         for each in self.codes:
