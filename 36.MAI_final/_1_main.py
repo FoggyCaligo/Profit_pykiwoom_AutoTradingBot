@@ -52,7 +52,9 @@ class Main(QMainWindow):
         self.managers = []
         for each in self.codes:
             self.managers.append(manager.StockManager(each))
-        self.account_no = "8063342511"
+        # self.account_no = "8063342511"
+        self.account_no = "8063880211"
+        
         
         self.buyprices = {}
         self.predprices = {}
@@ -96,7 +98,7 @@ class Main(QMainWindow):
             pred_price = abs(int(hoga[2][self.predict_priceidx(hoga[1])]))
             qty = abs(int(self.budjet/10/curr_price))
 
-            if pred_price - curr_price > curr_price*0.7/100: #수익률   
+            if pred_price - curr_price > curr_price*0.8/100: #수익률   
                 self.buy(code,qty,curr_price)
                 print(code,": buy",curr_price,"amount:",qty)
 
@@ -343,13 +345,13 @@ class Main(QMainWindow):
         # if not self.account_loop.isRunning():
         #     self.account_loop.exec_()
 
-    def sell_all_remainings(self,nPrevNext=0):
-        print("re1")
-        self.ocx.dynamicCall("SetInputValue(QString,QString)","계좌번호",self.account_no)
-        self.ocx.dynamicCall("SetInputValue(QString, QString)", "조회구분", "1")
-        self.ocx.dynamicCall("CommRqData(QString, QString, int, QString)",
-                         "계좌평가잔고내역요청", "opw00018", nPrevNext, "1000")
-        print("re1fin")
+    # def sell_all_remainings(self,nPrevNext=0):
+    #     print("re1")
+    #     self.ocx.dynamicCall("SetInputValue(QString,QString)","계좌번호",self.account_no)
+    #     self.ocx.dynamicCall("SetInputValue(QString, QString)", "조회구분", "1")
+    #     self.ocx.dynamicCall("CommRqData(QString, QString, int, QString)",
+    #                      "계좌평가잔고내역요청", "opw00018", nPrevNext, "1000")
+    #     print("re1fin")
 
 
 #기타 필요한 함수들----------------
