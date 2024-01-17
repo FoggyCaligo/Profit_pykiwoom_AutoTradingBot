@@ -21,7 +21,7 @@ class Main(QMainWindow):
         # kiwoom = Kiwoom()
         # kiwoom.CommConnect()
         # self.account_no = kiwoom.GetLoginInfo("ACCNO")
-        self.df = pd.read_csv("trade_record.csv")
+        #self.df = pd.read_csv("trade_record.csv")
         self.is_exit = False
 
         super().__init__()
@@ -81,8 +81,7 @@ class Main(QMainWindow):
 
     
     #실행함수#----------------------------------------------------------------
-    def _handler_real_data(self,code,real_type,data):
-        
+    def _handler_real_data(self,code,real_type,data):  
         if real_type == "주식호가잔량": #장 중이면---
             # self.cancel_all_buyorder()
             # if self.is_cleared == False:

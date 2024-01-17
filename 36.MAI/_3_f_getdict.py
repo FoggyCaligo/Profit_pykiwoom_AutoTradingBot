@@ -5,12 +5,8 @@ import numpy as np
 min_price = 10000
 max_price = 50000
 
-
 df_kospi = fdr.StockListing('KOSPI')
 ks200 = df_kospi[:]
-# print(ks200)
-
-
 
 stockdict = {}
 
@@ -38,4 +34,4 @@ def getls():
 
 
 value = getls()
-#print(value)
+print(value)

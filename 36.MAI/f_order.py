@@ -1,20 +1,14 @@
 from pykiwoom.kiwoom import *
 
-
-
 #연결
 kiwoom=Kiwoom()
 kiwoom.CommConnect(block=True)
 state = kiwoom.GetConnectState()
-account = kiwoom.GetLoginInfo("ACCNO")[0]#내 계좌 중 2번째 계좌  불러오기
+account = kiwoom.GetLoginInfo("ACCNO")[0]#내 계좌 중 첫번째 계좌  불러오기
 if(state==0):
     print("연결안됨")
 elif state==1:
     print("연결완료")
-
-
-
-
 
 #매수
 def buy(StockCode, Qty, Price):
