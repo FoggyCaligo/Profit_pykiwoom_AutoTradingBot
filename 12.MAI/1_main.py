@@ -34,8 +34,10 @@ class Main(QMainWindow):
         
     #실행함수
     def _handler_real_data(self,code,real_type,data):
+        print(real_type)
+
         if real_type == "장시작시간":#장 시작 전--------------------------------
-            
+            print("장x")
             
             
             pass
@@ -50,21 +52,23 @@ class Main(QMainWindow):
                 #매수
                 #order.buy(code, ,curr_price)
                 # -> 매수 수량을 정하는 알고리즘 필요
-
+                print("buy")
                 pass
             #매도판단
 
-            print('\n')
+            # print('\n')
 
         elif real_type == "장종료10분전동시호가":#장 종료 10분전 동시호가---------
             print("10분 전!")
 
 
 
+
+
             
         else :#-----------------------------------------------------------
             print("장 열리지 않음",real_type)
-
+            pass
         
 
 
@@ -86,13 +90,13 @@ class Main(QMainWindow):
 
 
 
-        pass
+        
 
 
 #순서대로
     def first_get_hoga(self):
         self.stocks.clear()
-        for each in self.codes:
+        for each in self.stocks:
             self.stocks.append(self.get_each_stock_data(each))
 
 
@@ -134,7 +138,7 @@ class Main(QMainWindow):
 #기타 필요한 함수들------------------------------------
     def connect(self):
         strarr = ""
-        for each in self.codes:
+        for each in self.stocks:
             strarr += each+";"
         strarr = strarr[:-1]
         self.SetRealReg("1000",strarr, "41", 0)
