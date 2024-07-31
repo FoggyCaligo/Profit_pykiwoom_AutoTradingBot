@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import *
 import list
 import time
 
+
 import csvRecord
 
 
@@ -21,15 +22,8 @@ class Kiwoom(QMainWindow):
         # 2초 후에 로그인 진행
         QTimer.singleShot(1000 * 2, self.CommmConnect)
         
-        #self.account_no = "8075724911"#모의투자계좌
+        #self.account_no =  "8082751111"#모의투자계좌
         self.account_no = "5704609010" #실계좌
-        
-        self.min_rev = 0.4#%
-        self.max_rev = 50#%
-
-        self.budjet = 50000#예산 - 10만원
-        self.codevariable = 3#거래할 종목 수 - 5개
-        
         self.data_ls = {}
 
 
@@ -41,8 +35,8 @@ class Kiwoom(QMainWindow):
             pred = self.get_pred(code)#호가 변한 정보가 받아와지면 해당 종목의 예상가 얻어오기
             
             #2024.7/27 추가. 오류 시 삭제 요망.
-            if pred[-1]<self.min_rev or self.max_rev<pred[-1]:#수익률이 마지노선 이하거나, 이상하게 높으면
-                del self.date_ls[code]#리스트에서 해당 종목 지우기
+            # if pred[-1]<list.min_rev or list.max_rev<pred[-1]:#수익률이 마지노선 이하거나, 이상하게 높으면
+            #     del self.data_ls[code]#리스트에서 해당 종목 지우기
             #2024/7/27ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
             print(code, " " , pred)
@@ -53,7 +47,6 @@ class Kiwoom(QMainWindow):
 
         if len(self.data_ls) == len(self.codes):#dict 꽉 차면 -> ls로 받아온 정제리스트 안의 모든 종목들의 수익률이 계산되어 저장된 경우
             
-        
             self.dls = sorted(self.data_ls.items(), key=lambda x: x[1][3], reverse=True)#수익률 높은 순서대로 정렬
             
             print("final refined tradable stock lists ")
@@ -62,34 +55,29 @@ class Kiwoom(QMainWindow):
                 print(each)
             print("\n\n\n")
 
-            money_per_code = self.budjet/self.codevariable#거래할 종목 수만큼 예산을 분할
+            money_per_code = list.budjet/list.codevariable#거래할 종목 수만큼 예산을 분할
   
-            for i in range(self.codevariable):#자동거래(매수) -> 수익률 높은 순으로 정렬된 리스트에서 상위(거래할종목수)개의 종목 거래
+            for i in range(list.codevariable):#자동거래(매수) -> 수익률 높은 순으로 정렬된 리스트에서 상위(거래할종목수)개의 종목 거래
                 print(self.dls[i])
                 qty = money_per_code/self.dls[i][1][1]#종목당 할당된 예산만큼 수량을 결정
                 self.buy(self.dls[i][0], qty, self.dls[i][1][1])#수익률 계산할 당시의 현재가로 매수  
                 #csv로 해당 거래 기록. 2024.7/27 
-                csvRecord.csv.add(self.dls[i][0],"Buy ",self.dls[i][1][1],qty)
+                #csvRecord.csv.add(self.dls[i][0],"Buy ",self.dls[i][1][1],qty)
+                csvRecord.csv.add_b(self.dls[i][0],self.dls[i][1][1],qty)
                 time.sleep(0.5)
-
-
-                
-            for i in range(self.codevariable):#자동거래(매도)  위의 if문과 같음
+              
+            for i in range(list.codevariable):#자동거래(매도)  위의 if문과 같음
                 qty = money_per_code/self.dls[i][1][1]  #위와 같음                  
                 self.sell(self.dls[i][0], qty, self.dls[i][1][2])#순서 뒤집으면 매도 되는지 확인해보기
                 #csv로 해당 거래 기록. 2024.7/27 
-                csvRecord.csv.add(self.dls[i][0],"Sell",self.dls[i][1][2],qty)
+                # csvRecord.csv.add(self.dls[i][0],"Sell",self.dls[i][1][2],qty)
+                csvRecord.csv.add_s(self.dls[i][0],self.dls[i][1][2],qty)
+                
                 time.sleep(0.5)            
 
             time.sleep(1)            
             csvRecord.csv.onExit()
             end_trade()
-
-    #오류 시 주석해제 요망.
-    # def SendOrder(self, order_type, code, quantity, price):
-    #     self.ocx.dynamicCall("SendOrder(QString, QString, QString, int, QString, int, int, QString, QString)", 
-    #                                ["지정가매수", "1000", self.account_no, order_type, code, quantity, price, "00", ""])
-    
 
     def buy(self,code,qty,price):
         self.ocx.dynamicCall("SendOrder(QString, QString, QString, int, QString, int, int, QString, QString)", 

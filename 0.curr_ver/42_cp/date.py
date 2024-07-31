@@ -1,18 +1,17 @@
 import datetime
 
-#
-today_date = datetime.datetime.now()
-today = today_date.strftime("%Y-%m-%d")
+# today_date = datetime.datetime.now()
+# today = today_date.strftime("%Y-%m-%d")
 
 
 
-pastdate_arr = []
-temp_date = today_date
-for i in range(7):
-    temp_date -= datetime.timedelta(days=1)
-    if(temp_date.weekday()==0):
-        temp_date -= datetime.timedelta(days=2)
-    pastdate_arr.append(temp_date.strftime("%Y-%m-%d"))
+# pastdate_arr = []
+# temp_date = today_date
+# for i in range(7):
+#     temp_date -= datetime.timedelta(days=1)
+#     if(temp_date.weekday()==0):
+#         temp_date -= datetime.timedelta(days=2)
+#     pastdate_arr.append(temp_date.strftime("%Y-%m-%d"))
 
 
 
@@ -40,3 +39,4 @@ def nearest_opendate(date):#주말 제외한 가장 가까운 영업일 찾아�
 
 
 print(get_7date())
+
