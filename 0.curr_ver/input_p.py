@@ -11,7 +11,7 @@ from tkinter import ttk
 
 
 #파라미터 입력창----------------------------------------------------
-csvloc = "./42_cp/parameter.csv"
+csvloc = "./42/parameter.csv"
 df = pd.read_csv(csvloc)
 df = df.columns
 print(df)
@@ -90,7 +90,7 @@ i_codevariable.grid(row=2,column=9)
 
 
 def f_submit():
-    csvloc = "./42_cp/parameter.csv"
+    csvloc = "./42/parameter.csv"
     df = pd.read_csv(csvloc)
     dfi = pd.DataFrame()
     print(df)
@@ -175,11 +175,11 @@ submit.grid(row=2,column=10)
 
 
 #이전 거래기록 불러오는 곳
-record_csvloc = "./42_cp/trade_record3.csv"
+record_csvloc = "./42/trade_record3.csv"
 record = pd.read_csv(record_csvloc)
 
 table = ttk.Treeview(window, columns=('시간','종목코드','거래타입','거래가','수량','총거래금', '세금','수수료','수익금','수익률'))
-table.grid(row=3,columnspan=200)
+table.grid(row=3,column=1,columnspan=10)
 
 table.heading("시간",text="시간")
 table.heading("종목코드",text="종목코드")

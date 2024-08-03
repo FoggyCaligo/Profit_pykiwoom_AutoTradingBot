@@ -3,7 +3,7 @@ import time
 
 class csvRecord:
     def __init__(self):
-        self.csvloc = "./42_cp/trade_record3.csv"
+        self.csvloc = "./42/trade_record3.csv"
         self.df = pd.read_csv(self.csvloc)
         self.dict = {}#종목별 매수금액 저장(매도 시 수익률 계산에 필요)
     def get_currtime(self):
