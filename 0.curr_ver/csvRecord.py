@@ -17,7 +17,7 @@ class csvRecord:
         ls = [self.get_currtime(),name,'/'+code,type,price,qty]
         temp = pd.DataFrame([ls],columns = ['time','name','code','type','price','qty'])
         self.df = pd.concat([self.df, temp],ignore_index=True)
-
+        
     def add(self,name,code,type,price,qty):
         ls = [self.get_currtime(),name,'/'+code,type,price,qty,]
         temp = pd.DataFrame([ls],columns = ['time','name','code','type','price','qty'])

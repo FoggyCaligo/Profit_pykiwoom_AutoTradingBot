@@ -35,6 +35,7 @@ class Kiwoom(QMainWindow):
         self.isbuy = True
         self.endbuy = False
 
+
     #실제 거래 진행 알고리즘
     def _handler_real_data(self,code,real_type,data):#루프 반복되는 함수 -> 한번 호출당 종목 하나
         #호가 데이터 기록
@@ -132,7 +133,7 @@ class Kiwoom(QMainWindow):
         temp_amount = []
         temp_price = []
         for i in reversed(range(10)):
-            temp = self.GetCommRealData(code,71+i)
+            # temp = self.GetCommRealData(code,71+i)
             #print("temp",temp)
             temp_amount.append(self.GetCommRealData(code,71+i))#매수호가
             temp_price.append(self.GetCommRealData(code,51+i))#매수수량
@@ -180,6 +181,7 @@ class Kiwoom(QMainWindow):
         #3시 이후면 프로그램 종료
         target2 = now.replace(hour=15,minute=0)
         if now>= target2:
+            csvRecord.csv.onExit()
             end_trade()
         
         
@@ -223,9 +225,8 @@ class Kiwoom(QMainWindow):
     def __getchejandata(self,fid):
         return self.ocx.dynamicCall("GetChejanData(int)",fid)
     
-    def __del__(self):
-        csvRecord.csv.onExit()
-
+    # def __del__(self):
+    #     csvRecord.csv.onExit()
 
 
     #기타 필요한 함수들
@@ -253,8 +254,6 @@ app = QApplication(sys.argv)
 
 #on/off 함수
 def start_trade():
-    h = time.localtime().tm_hour
-    m = time.localtime().tm_min    
     now = datetime.datetime.now()
     now = now.time()
     target = now.replace(hour=9,minute=30)
