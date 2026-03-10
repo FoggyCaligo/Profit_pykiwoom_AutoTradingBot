@@ -1,22 +1,27 @@
-from pykiwoom.kiwoom import *
-from PyQt5.QtCore import *
-from PyQt5.QtWidgets import *
 import list
 import time
 import datetime
+import sys
 
-
+import pykiwoom.kiwoom as kw
+import PyQt5.QtCore as QtCore
+import PyQt5.QtWidgets as QtWidgets
 import csvRecord
 import hogaRecord
 
-class Kiwoom(QMainWindow):
+
+
+#10:30 : 
+#11:00 : 
+#11:30 : 
+#12:00 : 손절매 주문 넣어놓기
+
+class Kiwoom(kw.QMainWindow):
     def __init__(self):
         super().__init__()
-
         #추출된 종목 리스트 받아오기
         self.codes = list.getls2()
-
-        self.ocx = QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
+        self.ocx = kw.QAxWidget("KHOPENAPI.KHOpenAPICtrl.1")
         self.ocx.OnEventConnect.connect(self.connect)#정제된 종목리스트의 종목들 구독하기
         self.ocx.OnReceiveRealData.connect(self._handler_real_data)#실시간 데이터를 받을 때마다 self._hander_real_data를 작동시키도록 등록
         
@@ -24,7 +29,7 @@ class Kiwoom(QMainWindow):
 
 
         # 2초 후에 로그인 진행
-        QTimer.singleShot(100 * 2, self.CommmConnect)
+        QtCore.QTimer.singleShot(100 * 2, self.CommmConnect)
         
         #self.account_no =  "8082751111"#모의투자계좌
         self.account_no = "5704609010" #실계좌
@@ -42,22 +47,21 @@ class Kiwoom(QMainWindow):
         hoga = self.get_each_hoga_data(code)
         self.hogarecord.record(code,hoga)
 
-        #9시반 ~ 12시 : 정상거래시간
+        #10시반 ~ 12시 : 정상거래시간
         #if now<=target1:#=========================================
             #예상가 계산해서 쌓아두기
             #ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         if real_type=="주식호가잔량":
                 pred = self.get_pred(code)#호가 변한 정보가 받아와지면 해당 종목의 예상가 얻어오기
                 #2024.7/27 추가. 오류 시 삭제 요망.
-                # if pred[-1]<list.min_rev or list.max_rev<pred[-1]:#수익률이 마지노선 이하거나, 이상하게 높으면
-                #     del self.data_ls[code]#리스트에서 해당 종목 지우기
+                if pred[-1]<list.min_rev or list.max_rev<pred[-1]:#수익률이 마지노선 이하거나, 이상하게 높으면
+                    del self.data_ls[code]#리스트에서 해당 종목 지우기
                 #2024/7/27ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-                #print(code, " " , pred)
+                print("Predicted returns for", code, ":", pred)
                 self.data_ls[code] = pred#일단 예상가 전부 저장
 
-
-            #다 쌓이면 수익률 상위(self.codevariable)의 종목들 거래.
-            #ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+        #다 쌓이면 수익률 상위(self.codevariable)의 종목들 거래.
+        #ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
         if len(self.data_ls) == len(self.codes) and self.isbuy and self.endbuy==False:#dict 꽉 차면(& 이미 산게 아니면)-> ls로 받아온 정제리스트 안의 모든 종목들의 수익률이 계산되어 저장된 경우
                 
                 self.dls = sorted(self.data_ls.items(), key=lambda x: x[1][3], reverse=True)#수익률 높은 순서대로 정렬
@@ -133,8 +137,6 @@ class Kiwoom(QMainWindow):
         temp_amount = []
         temp_price = []
         for i in reversed(range(10)):
-            # temp = self.GetCommRealData(code,71+i)
-            #print("temp",temp)
             temp_amount.append(self.GetCommRealData(code,71+i))#매수호가
             temp_price.append(self.GetCommRealData(code,51+i))#매수수량
         for i in range(10):
@@ -230,26 +232,27 @@ class Kiwoom(QMainWindow):
 
 
     #기타 필요한 함수들
-    def CommmConnect(self):
+    def CommmConnect(self):#pykiwoom 필요
         self.ocx.dynamicCall("CommConnect()")
-        self.statusBar().showMessage("login 중 ...")
+
     def connect(self):
         strarr = ""
         for each in self.codes:#여기서 오류 안나는지 확인해보기.
             strarr += each+";"
         strarr = strarr[:-1]
         self.SetRealReg("1000",strarr, "41", 0)
+    #바로 위 connect함수에 필요
     def SetRealReg(self, screen_no, code_list, fid_list, real_type):
         self.ocx.dynamicCall("SetRealReg(QString, QString, QString, QString)", 
                               screen_no, code_list, fid_list, real_type)
-    
+    #실시간 호가 가져오는 함수
     def GetCommRealData(self, code, fid):
         data = self.ocx.dynamicCall("GetCommRealData(QString, int)", code, fid) 
         return data
 
 
 
-app = QApplication(sys.argv)
+app = QtWidgets.QApplication(sys.argv)
 
 
 #on/off 함수

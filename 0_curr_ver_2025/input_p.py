@@ -1,17 +1,11 @@
 import tkinter as tk  
+from narwhals import String
 import pandas as pd  
 
-from tkinter import ttk
-
-
-
-
-
-
-
+from tkinter import StringVar, ttk
 
 #파라미터 입력창----------------------------------------------------
-csvloc = "./42/parameter.csv"
+csvloc = "./0_curr_ver_2025/parameter.csv"
 df = pd.read_csv(csvloc)
 df = df.columns
 print(df)
@@ -29,62 +23,61 @@ codevariable = df[8]#거래할 종목 수 - 5개
 
 
 window = tk.Tk()
-window.title="주식 자동거래 파라미터 조정용 탭"
-
-window.resizable=(True,True)
+window.title("주식 자동거래 파라미터 조정용 탭")
+window.resizable(True,True)
 
 
 
 l_price_min = tk.Label(window,text="종목 최저가")
 l_price_min.grid(row=1,column=1)
-i_price_min = tk.Entry(window,textvariable=str(price_min))    #최저가
+i_price_min = tk.Entry(window,textvariable=StringVar(value=str(price_min)))    #최저가
 i_price_min.grid(row=2,column=1)
 i_price_min.insert(0,str(price_min))
 l_price_max = tk.Label(window,text="종목 최고가")
 l_price_max.grid(row=1,column=2)
-i_price_max = tk.Entry(window,textvariable=str(price_max))   #최고가
+i_price_max = tk.Entry(window,textvariable=StringVar(value=str(price_max)))   #최고가
 i_price_max.grid(row=2,column=2)
 i_price_max.insert(0,str(price_max))
 
 l_vol_max = tk.Label(window,text="가격변동률 상한 마지노선(%)")
 l_vol_max.grid(row=1,column=3)
-i_vol_max = tk.Entry(window,textvariable=str(vol_max))#%      #가격변동률 상한 마지노선
+i_vol_max = tk.Entry(window,textvariable=StringVar(value=str(vol_max)))#%      #가격변동률 상한 마지노선
 i_vol_max.grid(row=2,column=3)
 i_vol_max.insert(0,str(vol_max))
 
 l_vol_min = tk.Label(window,text="가격변동률 하한 마지노선(%)")
 l_vol_min.grid(row=1,column=4)
-i_vol_min = tk.Entry(window,textvariable=str(vol_min))#%       #가격변동률 하한 마지노선
+i_vol_min = tk.Entry(window,textvariable=StringVar(value=str(vol_min)))#%       #가격변동률 하한 마지노선
 i_vol_min.grid(row=2,column=4)
 i_vol_min.insert(0,str(vol_min))
 
 l_search_stockamount = tk.Label(window,text="리스트 뽑을 종목 수(시가총액 상위 x개)")
 l_search_stockamount.grid(row=1,column=5)
-i_search_stockamount = tk.Entry(window,textvariable=str(search_stockamount)) #리스트 뽑을 종목 수(시가총액 상위 x개)
+i_search_stockamount = tk.Entry(window,textvariable=StringVar(value=str(search_stockamount))) #리스트 뽑을 종목 수(시가총액 상위 x개)
 i_search_stockamount.grid(row=2,column=5)
 i_search_stockamount.insert(0,str(search_stockamount))
 
 l_min_rev = tk.Label(window,text = "수익률 하한(%)")
 l_min_rev.grid(row=1,column=6)
-i_min_rev = tk.Entry(window,textvariable=str(min_rev))#%
+i_min_rev = tk.Entry(window,textvariable=StringVar(value=str(min_rev)))#%
 i_min_rev.grid(row=2,column=6)
 i_min_rev.insert(0,str(min_rev))
 
 l_max_rev = tk.Label(window,text = "수익률 상한(%)")
 l_max_rev.grid(row=1,column=7)
-i_max_rev = tk.Entry(window,textvariable=str(max_rev))
+i_max_rev = tk.Entry(window,textvariable=StringVar(value=str(max_rev)))
 i_max_rev.grid(row=2,column=7)
 i_max_rev.insert(0,str(max_rev))
 
 l_budjet = tk.Label(window,text="투자 가능한 예산(단위:원)")#예산 - 10만원
 l_budjet.grid(row=1,column=8)
-i_budjet = tk.Entry(window,textvariable=str(budjet))#예산 - 10만원
+i_budjet = tk.Entry(window,textvariable=StringVar(value=str(budjet)))#예산 - 10만원
 i_budjet.grid(row=2,column=8)
 i_budjet.insert(0,str(budjet))
 
 l_codevariable = tk.Label(window,text="거래할 종목 수")
 l_codevariable.grid(row=1,column=9)
-i_codevariable = tk.Entry(window,text="거래할 종목 수")
+i_codevariable = tk.Entry(window,textvariable=StringVar(value=str(codevariable)))
 i_codevariable.grid(row=2,column=9)
 i_codevariable.insert(0,str(codevariable))
 
@@ -99,7 +92,7 @@ i_codevariable.insert(0,str(codevariable))
 
 
 def f_submit():
-    csvloc = "./42/parameter.csv"
+    csvloc = "./0_curr_ver_2025/parameter.csv"
     df = pd.read_csv(csvloc)
     dfi = pd.DataFrame()
     print(df)
@@ -158,6 +151,7 @@ def f_submit():
     print("최대수익률: ",max_rev)
     print("예산     : ",budjet)
     print("거래종목수: ",  codevariable)
+    
 
     print(dfi)
     empty = pd.DataFrame()
@@ -184,7 +178,7 @@ submit.grid(row=2,column=10)
 
 
 #이전 거래기록 불러오는 곳
-record_csvloc = "./42/trade_record3.csv"
+record_csvloc = "./0_curr_ver_2025/trade_record3.csv"
 record = pd.read_csv(record_csvloc)
 
 table = ttk.Treeview(window, columns=('시간','종목코드','거래타입','거래가','수량','총거래금', '세금','수수료','수익금','수익률'))
@@ -218,21 +212,7 @@ print(record)
 for i in range(len(record)):
     print("------")
     print(record.loc[i].values)
-    table.insert("","end",text="",values=record.loc[i].values)
+    table.insert("","end",text="",values=list(record.loc[i].values))
     
 
-
-
-
-
 window.mainloop()
-
-
-
-
-
-
-
-
-
-        

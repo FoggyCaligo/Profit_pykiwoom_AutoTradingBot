@@ -1,0 +1,4 @@
+pykiwoom
+finance-datareader
+pandas
+PyQt5

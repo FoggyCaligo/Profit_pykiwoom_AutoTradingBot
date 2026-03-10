@@ -16,8 +16,8 @@ class hogaRecord:
         pass
 
     def get_currtime(self):        
-        d = str(time.localtime().tm_year)+'_'+str(time.localtime().tm_mon) + "_" + str(time.localtime().tm_mday) + "]"
-        t = str(time.localtime().tm_hour) + "]" + str(time.localtime().tm_min) +"]" + str(time.localtime().tm_sec)
+        d = str(time.localtime().tm_year)+'_'+str(time.localtime().tm_mon) + "_" + str(time.localtime().tm_mday) + ":"
+        t = str(time.localtime().tm_hour) + ":" + str(time.localtime().tm_min) +":" + str(time.localtime().tm_sec)
         t = d+t
         return t
 
