@@ -1,0 +1,23 @@
+[project]
+name = "profit_pykiwoom_autotradingbot"
+version = "0.1.0"
+description = "키움 OpenAPI 기반 자동매매 봇"
+authors = [
+    { name = "BigLa" , email = "you@example.com" },
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "pykiwoom>=1.0.0",
+    "PyQt5>=5.15",
+    "pandas>=2.0",
+    "finance-datareader>=0.9.6",
+    # 필요하면 추가 라이브러리
+]
+
+[project.scripts]
+profit-bot = "profit_bot.__main__:main"   # 진입점이 있다면
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"

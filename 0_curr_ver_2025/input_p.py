@@ -30,56 +30,56 @@ window.resizable(True,True)
 
 l_price_min = tk.Label(window,text="종목 최저가")
 l_price_min.grid(row=1,column=1)
-i_price_min = tk.Entry(window,textvariable=StringVar(value=str(price_min)))    #최저가
+i_price_min = tk.Entry(window,textvariable=StringVar(value=price_min))    #최저가
 i_price_min.grid(row=2,column=1)
-i_price_min.insert(0,str(price_min))
+# i_price_min.insert(0,str(price_min))
 l_price_max = tk.Label(window,text="종목 최고가")
 l_price_max.grid(row=1,column=2)
-i_price_max = tk.Entry(window,textvariable=StringVar(value=str(price_max)))   #최고가
+i_price_max = tk.Entry(window,textvariable=StringVar(value=price_max))   #최고가
 i_price_max.grid(row=2,column=2)
-i_price_max.insert(0,str(price_max))
+# i_price_max.insert(0,str(price_max))
 
 l_vol_max = tk.Label(window,text="가격변동률 상한 마지노선(%)")
 l_vol_max.grid(row=1,column=3)
-i_vol_max = tk.Entry(window,textvariable=StringVar(value=str(vol_max)))#%      #가격변동률 상한 마지노선
+i_vol_max = tk.Entry(window,textvariable=StringVar(value=vol_max))#%      #가격변동률 상한 마지노선
 i_vol_max.grid(row=2,column=3)
-i_vol_max.insert(0,str(vol_max))
+# i_vol_max.insert(0,str(vol_max))
 
 l_vol_min = tk.Label(window,text="가격변동률 하한 마지노선(%)")
 l_vol_min.grid(row=1,column=4)
-i_vol_min = tk.Entry(window,textvariable=StringVar(value=str(vol_min)))#%       #가격변동률 하한 마지노선
+i_vol_min = tk.Entry(window,textvariable=StringVar(value=vol_min))#%       #가격변동률 하한 마지노선
 i_vol_min.grid(row=2,column=4)
-i_vol_min.insert(0,str(vol_min))
+# i_vol_min.insert(0,str(vol_min))
 
 l_search_stockamount = tk.Label(window,text="리스트 뽑을 종목 수(시가총액 상위 x개)")
 l_search_stockamount.grid(row=1,column=5)
-i_search_stockamount = tk.Entry(window,textvariable=StringVar(value=str(search_stockamount))) #리스트 뽑을 종목 수(시가총액 상위 x개)
+i_search_stockamount = tk.Entry(window,textvariable=StringVar(value=search_stockamount)) #리스트 뽑을 종목 수(시가총액 상위 x개)
 i_search_stockamount.grid(row=2,column=5)
-i_search_stockamount.insert(0,str(search_stockamount))
+# i_search_stockamount.insert(0,str(search_stockamount))
 
 l_min_rev = tk.Label(window,text = "수익률 하한(%)")
 l_min_rev.grid(row=1,column=6)
-i_min_rev = tk.Entry(window,textvariable=StringVar(value=str(min_rev)))#%
+i_min_rev = tk.Entry(window,textvariable=StringVar(value=min_rev))#%
 i_min_rev.grid(row=2,column=6)
-i_min_rev.insert(0,str(min_rev))
+# i_min_rev.insert(0,str(min_rev))
 
 l_max_rev = tk.Label(window,text = "수익률 상한(%)")
 l_max_rev.grid(row=1,column=7)
-i_max_rev = tk.Entry(window,textvariable=StringVar(value=str(max_rev)))
+i_max_rev = tk.Entry(window,textvariable=StringVar(value=max_rev))
 i_max_rev.grid(row=2,column=7)
-i_max_rev.insert(0,str(max_rev))
+# i_max_rev.insert(0,str(max_rev))
 
 l_budjet = tk.Label(window,text="투자 가능한 예산(단위:원)")#예산 - 10만원
 l_budjet.grid(row=1,column=8)
-i_budjet = tk.Entry(window,textvariable=StringVar(value=str(budjet)))#예산 - 10만원
+i_budjet = tk.Entry(window,textvariable=StringVar(value=budjet))#예산 - 10만원
 i_budjet.grid(row=2,column=8)
-i_budjet.insert(0,str(budjet))
+# i_budjet.insert(0,str(budjet))
 
 l_codevariable = tk.Label(window,text="거래할 종목 수")
 l_codevariable.grid(row=1,column=9)
-i_codevariable = tk.Entry(window,textvariable=StringVar(value=str(codevariable)))
+i_codevariable = tk.Entry(window,textvariable=StringVar(value=codevariable))
 i_codevariable.grid(row=2,column=9)
-i_codevariable.insert(0,str(codevariable))
+# i_codevariable.insert(0,str(codevariable))
 
 
 

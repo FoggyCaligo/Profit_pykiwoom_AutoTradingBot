@@ -1,4 +1,18 @@
+!) 본 프로젝트는 윈도우 전용으로, 키움 API와 HTS 설치가 필요함.
+
+https://www.kiwoom.com/h/customer/download/VOpenApiRegView?dummyVal=0
+
+https://www3.kiwoom.com/h/help/channel/VHelpHts4InstallView
+
+
+
+
+
 <알고리즘>
+
+
+
+
 
 1. 
 
